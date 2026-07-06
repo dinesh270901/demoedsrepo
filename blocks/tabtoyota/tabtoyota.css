@@ -1,0 +1,70 @@
+.tabtoyota {
+  --tabtoyota-bg: #cfe4f5;
+  --tabtoyota-active-bg: #e0e0e0;
+  --tabtoyota-inactive-bg: #cfe4f5;
+  --tabtoyota-divider: #ffffff;
+  --tabtoyota-text: #1a1a1a;
+  --tabtoyota-highlight: #c8102e;
+}
+
+.tabtoyota-list {
+  display: flex;
+  background-color: var(--tabtoyota-bg);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabtoyota-tab {
+  flex: none;
+  appearance: none;
+  border: 0;
+  border-right: 1px solid var(--tabtoyota-divider);
+  background-color: var(--tabtoyota-inactive-bg);
+  color: var(--tabtoyota-text);
+  cursor: pointer;
+  padding: 20px 32px;
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tabtoyota-tab:hover {
+  background-color: var(--tabtoyota-active-bg);
+}
+
+.tabtoyota-tab[aria-selected=true] {
+  background-color: var(--tabtoyota-active-bg);
+  font-weight: 700;
+}
+
+.tabtoyota-tab-highlight {
+  color: var(--tabtoyota-highlight);
+  font-weight: 700;
+}
+
+.tabtoyota-tab:focus-visible {
+  outline: 2px solid var(--tabtoyota-highlight);
+  outline-offset: -2px;
+}
+
+.tabtoyota-panels {
+  padding: 24px 0;
+}
+
+.tabtoyota-panel[aria-hidden=true] {
+  display: none;
+}
+
+.tabtoyota-panel p:first-child {
+  margin-top: 0;
+}
+
+@media (width <= 600px) {
+  .tabtoyota-tab {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+}
+/*# sourceMappingURL=tabtoyota.css.map */
