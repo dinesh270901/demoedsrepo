@@ -6,12 +6,14 @@
   --tabtoyota-text: #1a1a1a;
   --tabtoyota-highlight: #c8102e;
 }
+
 .tabtoyota-list {
   display: flex;
   background-color: var(--tabtoyota-bg);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
 .tabtoyota-tab {
   flex: none;
   appearance: none;
@@ -27,32 +29,40 @@
   white-space: nowrap;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
+
 .tabtoyota-tab:hover {
   background-color: var(--tabtoyota-active-bg);
 }
+
 .tabtoyota-tab[aria-selected=true] {
   background-color: var(--tabtoyota-active-bg);
   font-weight: 700;
 }
+
 .tabtoyota-tab-highlight {
   color: var(--tabtoyota-highlight);
   font-weight: 700;
 }
+
 .tabtoyota-tab:focus-visible {
   outline: 2px solid var(--tabtoyota-highlight);
   outline-offset: -2px;
 }
+
 .tabtoyota-panels {
   padding: 24px 0;
 }
+
 .tabtoyota-panel[aria-hidden=true] {
   display: none;
 }
+
 .tabtoyota-panel p:first-child {
   margin-top: 0;
 }
+
 @media (width <= 600px) {
-  .tabtoyota .tabtoyota-tab {
+  .tabtoyota-tab {
     padding: 14px 20px;
     font-size: 16px;
   }

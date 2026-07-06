@@ -1,18 +1,17 @@
 import { toClassName } from '../../scripts/aem.js';
 
 /**
- * Authoring structure (table block named "Tabtoyota"):
+ * Authoring structure (matches the screenshot table named "tabtoyota"):
  *
- * | Tabtoyota             |            |
- * | --------------------- | ---------- |
- * | Our Mission           |            |   <- row 1: tab label (2nd cell optional flag e.g. "highlight")
- * | <rich text content>   |            |   <- row 2: tab panel content
- * | Getting Started       |            |
- * | <rich text content>   |            |
- * | FAQ                   | highlight  |
- * | <rich text content>   |            |
+ * | tabtoyota                                    |
+ * | -------------- | --------------------------- |
+ * | our mission    | <content for this tab>      |
+ * | getting started| <content for this tab>      |
+ * | FAQ            | <content for this tab>      |
  *
- * Rows come in label/content pairs.
+ * Each row = ONE tab: 1st cell = label, 2nd cell = panel content.
+ * (Add the word "highlight" at the end of the label cell text to render
+ *  that tab in the accent/red color, e.g. "FAQ highlight".)
  */
 export default function decorate(block) {
   const rows = [...block.children];
@@ -24,15 +23,15 @@ export default function decorate(block) {
   const panelsWrapper = document.createElement('div');
   panelsWrapper.className = 'tabtoyota-panels';
 
-  for (let i = 0; i < rows.length; i += 2) {
-    const labelRow = rows[i];
-    const contentRow = rows[i + 1];
-    if (!labelRow || !contentRow) break;
+  rows.forEach((row, i) => {
+    const labelCell = row.children[0];
+    const contentCell = row.children[1];
+    if (!labelCell || !contentCell) return;
 
-    const labelCell = labelRow.children[0];
-    const flagCell = labelRow.children[1];
-    const isHighlighted = flagCell && flagCell.textContent.trim().toLowerCase() === 'highlight';
-    const labelText = labelCell.textContent.trim();
+    let labelText = labelCell.textContent.trim();
+    const isHighlighted = /highlight$/i.test(labelText);
+    if (isHighlighted) labelText = labelText.replace(/highlight$/i, '').trim();
+
     const id = toClassName(labelText);
     const isFirst = i === 0;
 
@@ -48,13 +47,14 @@ export default function decorate(block) {
     button.setAttribute('aria-selected', isFirst);
     tablist.append(button);
 
-    // tab panel (reuse the content row as the panel)
-    const panel = contentRow;
+    // tab panel
+    const panel = document.createElement('div');
     panel.className = 'tabtoyota-panel';
     panel.id = `tabpanel-${id}`;
     panel.setAttribute('role', 'tabpanel');
     panel.setAttribute('aria-labelledby', `tab-${id}`);
     panel.setAttribute('aria-hidden', !isFirst);
+    panel.append(...contentCell.childNodes);
     panelsWrapper.append(panel);
 
     button.addEventListener('click', () => {
@@ -67,9 +67,7 @@ export default function decorate(block) {
       button.setAttribute('aria-selected', 'true');
       panel.setAttribute('aria-hidden', 'false');
     });
-
-    labelRow.remove();
-  }
+  });
 
   block.textContent = '';
   block.append(tablist, panelsWrapper);
