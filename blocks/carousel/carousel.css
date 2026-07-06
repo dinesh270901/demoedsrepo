@@ -1,13 +1,14 @@
+@charset "UTF-8";
 .carousel {
   position: relative;
   overflow: hidden;
- 
 }
 
-.carousel-wrapper{
-    background-color:lavender;
-    margin-top: 40px;
+.carousel-wrapper {
+  background-color: lavender;
+  margin-top: 40px;
 }
+
 .carousel .carousel-track {
   display: flex;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -104,7 +105,6 @@
   .carousel .carousel-slide .carousel-slide-image {
     height: 200px;
   }
-
   .carousel .carousel-prev,
   .carousel .carousel-next {
     top: 100px;
@@ -113,3 +113,4 @@
     font-size: 1rem;
   }
 }
+/*# sourceMappingURL=carousel.css.map */
