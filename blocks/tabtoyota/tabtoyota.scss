@@ -9,7 +9,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  justify-content: left;
+  padding-left: 24px;
 }
 
 .tabtoyota-tab {
@@ -29,7 +29,6 @@
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-/* divider only as tall as the text, vertically centered, not the full tab height */
 .tabtoyota-tab::after {
   content: '';
   position: absolute;
@@ -38,7 +37,7 @@
   transform: translateY(-50%);
   height: 1.2em;
   width: 1px;
-  background-color: #a9c8de;
+  background-color: #b7cdda;
 }
 
 .tabtoyota-tab:last-child::after {
@@ -50,7 +49,6 @@
   color: #d81e25;
 }
 
-/* ONLY the active tab turns red — resets automatically when another tab is clicked */
 .tabtoyota-tab[aria-selected=true] {
   background-color: #e1e1e1;
   color: #d81e25;
