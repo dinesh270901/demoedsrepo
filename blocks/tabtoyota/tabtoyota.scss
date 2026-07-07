@@ -1,15 +1,6 @@
-.tabtoyota {
-  --tabtoyota-bg: #cfe4f5;
-  --tabtoyota-active-bg: #e0e0e0;
-  --tabtoyota-inactive-bg: #cfe4f5;
-  --tabtoyota-divider: #ffffff;
-  --tabtoyota-text: #1a1a1a;
-  --tabtoyota-highlight: #b8253e;
-}
-
 .tabtoyota-list {
   display: flex;
-  background-color: var(--tabtoyota-bg);
+  background-color: #cfe4f5;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -18,13 +9,13 @@
   flex: none;
   appearance: none;
   border: 0;
-  border-right: 1px solid var(--tabtoyota-divider);
-  background-color: var(--tabtoyota-inactive-bg);
-  color: var(--tabtoyota-text);
+  border-right: 1px solid #ffffff;
+  background-color: #ef5711;
+  color: #1a1a1a;
   cursor: pointer;
   margin: 20px;
   padding: 20px 32px;
-  font-family: 'ToyotaType-Regular', var(--body-font-family), sans-serif;
+  font-family: 'ToyotaType-Regular', Arial, sans-serif;
   font-size: 20px;
   font-weight: 400;
   white-space: nowrap;
@@ -32,23 +23,23 @@
 }
 
 .tabtoyota-tab:hover {
-  background-color: var(--tabtoyota-active-bg);
+  background-color: #e0e0e0;
 }
 
 /* ONLY the active tab turns red — resets automatically when another tab is clicked */
 .tabtoyota-tab[aria-selected='true'] {
-  background-color: var(--tabtoyota-active-bg);
-  color: var(--tabtoyota-highlight);
+  background-color: #e0e0e0;
+  color: #b8253e;
   font-weight: 700;
 }
 
 .tabtoyota-tab[aria-selected='false'] {
-  color: var(--tabtoyota-text);
+  color: #1a1a1a;
   font-weight: 400;
 }
 
 .tabtoyota-tab:focus-visible {
-  outline: 2px solid var(--tabtoyota-highlight);
+  outline: 2px solid #b8253e;
   outline-offset: -2px;
 }
 
