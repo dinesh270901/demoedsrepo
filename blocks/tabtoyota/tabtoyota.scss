@@ -1,5 +1,8 @@
+@charset "UTF-8";
+
 .tabtoyota-list {
   display: flex;
+  align-items: center;
   background-color: #cfe4f5;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -9,31 +12,35 @@
   flex: none;
   appearance: none;
   border: 0;
-  border-right: 1px solid #ffffff;
-  background-color: #ef5711;
+  border-right: 1px solid #a9c8de;
+  background-color: transparent;
   color: #1a1a1a;
   cursor: pointer;
-  margin: 20px;
-  padding: 20px 32px;
-  font-family: 'ToyotaType-Regular', Arial, sans-serif;
+  margin: 0;
+  padding: 24px 28px;
+  font-family: "ToyotaType-Regular", Arial, sans-serif;
   font-size: 20px;
   font-weight: 400;
   white-space: nowrap;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+.tabtoyota-tab:last-child {
+  border-right: 0;
 }
 
 .tabtoyota-tab:hover {
-  background-color: #e0e0e0;
+  color: #b8253e;
 }
 
 /* ONLY the active tab turns red — resets automatically when another tab is clicked */
-.tabtoyota-tab[aria-selected='true'] {
-  background-color: #e0e0e0;
+.tabtoyota-tab[aria-selected=true] {
+  background-color: transparent;
   color: #b8253e;
-  font-weight: 700;
+  font-weight: 400;
 }
 
-.tabtoyota-tab[aria-selected='false'] {
+.tabtoyota-tab[aria-selected=false] {
   color: #1a1a1a;
   font-weight: 400;
 }
@@ -47,7 +54,7 @@
   padding: 24px 0;
 }
 
-.tabtoyota-panel[aria-hidden='true'] {
+.tabtoyota-panel[aria-hidden=true] {
   display: none;
 }
 
@@ -57,7 +64,7 @@
 
 @media (width <= 600px) {
   .tabtoyota-tab {
-    padding: 14px 20px;
+    padding: 16px 20px;
     font-size: 16px;
   }
 }
