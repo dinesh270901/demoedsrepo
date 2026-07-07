@@ -6,16 +6,13 @@
   background-color: #cfe4f5;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
 }
 
 .tabtoyota-tab {
   flex: none;
   appearance: none;
   border: 0;
-  border-right: 1px solid #d81e25;
+  border-right: 1px solid #fcfcfc;
   background-color: transparent;
   color: #1a1a1a;
   cursor: pointer;
@@ -67,7 +64,7 @@
 
 @media (width <= 600px) {
   .tabtoyota-tab {
-    padding: 16px 20px;
-    font-size: 16px;
+    padding: 16px 20px;
+    font-size: 16px;
   }
 }
