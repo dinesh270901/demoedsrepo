@@ -35,15 +35,16 @@
   background-color: var(--tabtoyota-active-bg);
 }
 
+/* ONLY the active tab turns red — resets automatically when another tab is clicked */
 .tabtoyota-tab[aria-selected='true'] {
   background-color: var(--tabtoyota-active-bg);
   color: var(--tabtoyota-highlight);
   font-weight: 700;
 }
 
-.tabtoyota-tab-highlight {
-  color: var(--tabtoyota-highlight);
-  font-weight: 700;
+.tabtoyota-tab[aria-selected='false'] {
+  color: var(--tabtoyota-text);
+  font-weight: 400;
 }
 
 .tabtoyota-tab:focus-visible {
