@@ -23,9 +23,9 @@
   padding: 24px 28px;
   font-family: "ToyotaType-Regular", Arial, sans-serif;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 700;
   white-space: nowrap;
-  transition: color 0.2s ease, font-weight 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 /* divider only as tall as the text, vertically centered, not the full tab height */
@@ -46,7 +46,6 @@
 
 .tabtoyota-tab:hover {
   color: #d81e25;
-  font-weight: 700;
 }
 
 /* ONLY the active tab turns red — resets automatically when another tab is clicked */
@@ -58,7 +57,7 @@
 
 .tabtoyota-tab[aria-selected=false] {
   color: #1a1a1a;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .tabtoyota-tab:focus-visible {
