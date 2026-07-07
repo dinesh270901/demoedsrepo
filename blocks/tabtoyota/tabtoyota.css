@@ -40,7 +40,7 @@
   transform: translateY(-50%);
   height: 1.2em;
   width: 1px;
-  background-color: #b7cdda;
+  background-color: #ffffff;
 }
 
 .tabtoyota-tab:last-child::after {
