@@ -2,7 +2,7 @@
 
 .tabtoyota {
   position: sticky;
-  top: 0;
+  top: var(--nav-height);
   z-index: 2;
 }
 
