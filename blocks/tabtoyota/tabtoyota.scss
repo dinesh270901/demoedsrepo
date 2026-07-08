@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+.tabtoyota {
+  position: sticky;
+  top: var(--nav-height, 64px);
+  z-index: 1;
+}
 .tabtoyota-list {
   display: flex;
   align-items: center;
