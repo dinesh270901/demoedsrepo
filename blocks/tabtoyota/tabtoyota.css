@@ -6,17 +6,18 @@
   overflow-x: hidden;
 }
 
-.tabtoyota-list {
-  display: flex;
-  align-items: center;
-  background-color: #cfe4f5;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding-left: 100px;
-}
+  .tabtoyota-list {
+    display: flex;
+    align-items: center;
+    background-color: #cfe4f5;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: 24px;
+    cursor: grab;   /* ← new */
+  }
 
 .tabtoyota-tab {
   position: relative;
