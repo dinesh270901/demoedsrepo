@@ -2,7 +2,7 @@
 
 .tabtoyota {
   position: sticky;
-  z-index: 100;
+  z-index: 2;
   overflow-x: hidden;
 }
 
@@ -15,20 +15,8 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  margin-top: 10px;
   padding-left: 24px;
-  max-width: 100%;
-  cursor: grab;
-  touch-action: pan-y;
-  z-index: 100;
-}
-
-@media (min-width: 675px) {
-  .tabtoyota-list {
-    justify-content: center;
-    padding-left: 0px;
-    max-width: 100%;
-  }
+  cursor: grab;   /* ← new */
 }
 
 .tabtoyota-tab {
@@ -97,16 +85,6 @@
 
 .tabtoyota-panel p:first-child {
   margin-top: 0;
-}
-
-@font-face {
-  font-family: 'ToyotaType-Regular';
-  src: url('../../fonts/ToyotaType-Regular/ToyotaType-Regular.woff2') format('woff2'),
-       url('../../fonts/ToyotaType-Regular/ToyotaType-Regular.woff') format('woff'),
-       url('../../fonts/ToyotaType-Regular/ToyotaType-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
 }
 
 @media (width <= 600px) {
