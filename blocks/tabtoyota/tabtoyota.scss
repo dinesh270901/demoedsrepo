@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .tabtoyota {
-  position: sticky;
+  position: fixed;
   top: var(--nav-height);
   z-index: 2;
 }
