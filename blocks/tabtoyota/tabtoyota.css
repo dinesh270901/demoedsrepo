@@ -30,8 +30,8 @@
   min-height: 70px;
   display: flex;
   align-items: center;
-  font-family: "ToyotaType-Semibold", "HelvNeueBold", "Helvetica Bold", "Arial Bold", "Open Sans", Arial, sans-serif;
-  font-size: 20px;
+  font-family: 'ToyotaType-Regular', 'HelveticaNeueMedium', 'Helvetica Neue Medium', 'Open Sans', Arial, sans-serif;
+  font-size: 24px;
   font-weight: 600;
   white-space: nowrap;
   transition: color 0.2s ease, background-color 0.2s ease;
