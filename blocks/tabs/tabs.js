@@ -1,77 +1,70 @@
-function switchTab(block, index) {
-  const buttons = [...block.querySelectorAll('.tabs-nav button')];
-  const panels = [...block.querySelectorAll('.tabs-panel')];
-
-  buttons.forEach((btn, i) => {
-    const isActive = i === index;
-    btn.setAttribute('aria-selected', String(isActive));
-    btn.setAttribute('tabindex', isActive ? '0' : '-1');
-  });
-
-  panels.forEach((panel, i) => {
-    panel.setAttribute('aria-hidden', String(i !== index));
-  });
-}
+/*
+ * Tabs block — jump-link bar (NOT panel-switching)
+ * Authored as a table, one link per row, no content column:
+ *
+ * | tabs                                 |
+ * | [Our Mission](#our-mission)          |
+ * | [Getting Started](#getting-started)  |
+ * | [FAQ](#faq)                          |
+ *
+ * Each link's href must match an id on another section of the page
+ * (e.g. from an Anchor block, or an auto-id'd heading). Clicking uses the
+ * browser's native anchor jump — no content switching happens here.
+ * This script only builds the nav bar and adds scroll-spy: highlighting
+ * whichever link's target section is currently in view.
+ */
 
 export default function decorate(block) {
   const rows = [...block.children];
 
-  // ── Build nav bar ──
   const nav = document.createElement('div');
   nav.classList.add('tabs-nav');
   nav.setAttribute('role', 'tablist');
 
-  // ── Build panels container ──
-  const panelsWrap = document.createElement('div');
-  panelsWrap.classList.add('tabs-panels');
+  const links = [];
 
-  rows.forEach((row, i) => {
-    const [labelCell, contentCell] = [...row.children];
+  rows.forEach((row) => {
+    // find the authored link no matter how deeply it's wrapped
+    // (da.live typically wraps it in a <div><p><a>...)
+    const link = row.querySelector('a');
+    if (!link) return;
 
-    // ── Tab button ──
-    const btn = document.createElement('button');
-    btn.setAttribute('role', 'tab');
-    btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-    btn.setAttribute('tabindex', i === 0 ? '0' : '-1');
-    btn.setAttribute('aria-controls', `tabs-panel-${i}`);
-    btn.setAttribute('id', `tabs-btn-${i}`);
-    btn.textContent = labelCell.textContent.trim();
-
-    btn.addEventListener('click', () => switchTab(block, i));
-
-    // Keyboard arrow navigation
-    btn.addEventListener('keydown', (e) => {
-      const buttons = [...block.querySelectorAll('.tabs-nav button')];
-      const total = buttons.length;
-      let newIndex = i;
-
-      if (e.key === 'ArrowRight') newIndex = (i + 1) % total;
-      else if (e.key === 'ArrowLeft') newIndex = (i - 1 + total) % total;
-      else if (e.key === 'Home') newIndex = 0;
-      else if (e.key === 'End') newIndex = total - 1;
-      else return;
-
-      e.preventDefault();
-      switchTab(block, newIndex);
-      buttons[newIndex].focus();
-    });
-
-    nav.appendChild(btn);
-
-    // ── Tab panel ──
-    const panel = document.createElement('div');
-    panel.classList.add('tabs-panel');
-    panel.setAttribute('role', 'tabpanel');
-    panel.setAttribute('id', `tabs-panel-${i}`);
-    panel.setAttribute('aria-labelledby', `tabs-btn-${i}`);
-    panel.setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
-    panel.innerHTML = contentCell.innerHTML;
-
-    panelsWrap.appendChild(panel);
+    link.classList.add('tabs-link');
+    link.setAttribute('role', 'tab');
+    link.setAttribute('aria-selected', 'false');
+    nav.appendChild(link);
+    links.push(link);
   });
 
-  // ── Clear block and rebuild ──
   block.textContent = '';
   block.appendChild(nav);
-  block.appendChild(panelsWrap);
+
+  if (!links.length || !('IntersectionObserver' in window)) return;
+
+  const targets = links
+    .map((link) => {
+      const id = link.getAttribute('href')?.replace('#', '');
+      return id ? document.getElementById(id) : null;
+    })
+    .filter(Boolean);
+
+  if (!targets.length) return;
+
+  const setActive = (id) => {
+    links.forEach((l) => {
+      const isActive = l.getAttribute('href') === `#${id}`;
+      l.setAttribute('aria-selected', String(isActive));
+    });
+  };
+
+  // highlight the first section's link by default on page load
+  setActive(targets[0].id);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+
+  targets.forEach((t) => observer.observe(t));
 }
