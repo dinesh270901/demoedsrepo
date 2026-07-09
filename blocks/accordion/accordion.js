@@ -66,7 +66,12 @@ export default function decorate(block) {
       });
     }
 
-    trigger.addEventListener('click', () => {
+    trigger.addEventListener('click', (e) => {
+      // Only respond if the click happened on the text itself
+      if (!titleSpan.contains(e.target)) {
+        return;
+      }
+
       const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
       allTriggers.forEach((t, i) => {

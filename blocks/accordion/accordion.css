@@ -16,7 +16,7 @@
   background: transparent;
   border: 0;
   text-align: left;
-  cursor: default;          /* changed from pointer */
+  cursor: default;
   font-size: 1.15rem;
   font-weight: 700;
   color: #1a1a1a;
@@ -24,7 +24,7 @@
 }
 
 .accordion-block .accordion-trigger-text {
-  cursor: pointer;          /* only the text shows pointer on hover */
+  cursor: pointer;
 }
 
 .accordion-block .accordion-trigger:focus-visible {
@@ -42,7 +42,6 @@
   border-bottom: 2px solid #d81e25;
   transform: rotate(-45deg);
   transition: transform 0.3s ease;
-  cursor: default;          /* arrow itself stays normal cursor too */
 }
 
 .accordion-block .accordion-trigger[aria-expanded="true"]::before {
