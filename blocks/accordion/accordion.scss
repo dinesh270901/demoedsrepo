@@ -10,9 +10,9 @@
   .accordion-block .accordion-trigger {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 18px;
     width: 100%;
-    padding: 20px 4px;
+    padding: 22px 4px 22px 24px;
     background: transparent;
     border: 0;
     text-align: left;
@@ -28,19 +28,21 @@
     outline-offset: 2px;
   }
   
-  /* red chevron before the text */
+  /* red chevron before the text — border-drawn, inline with flex, no absolute positioning */
   .accordion-block .accordion-trigger::before {
-    content: '\276F'; /* ❯ */
-    flex: 0 0 auto;
-    color: #d31145;        /* swap for your brand red */
-    font-size: 0.85em;
-    line-height: 1;
-    transition: transform 0.2s ease;
+    content: '';
     display: inline-block;
+    flex: 0 0 auto;
+    width: 0.5em;
+    height: 0.5em;
+    border-right: 2px solid #d81e25;
+    border-bottom: 2px solid #d81e25;
+    transform: rotate(-45deg); /* points right when collapsed */
+    transition: transform 0.3s ease;
   }
   
   .accordion-block .accordion-trigger[aria-expanded="true"]::before {
-    transform: rotate(90deg);
+    transform: rotate(45deg); /* points down when expanded */
   }
   
   .accordion-block .accordion-panel {
@@ -53,7 +55,7 @@
   }
   
   .accordion-block .accordion-panel-inner {
-    padding: 0 4px 24px calc(0.85em + 14px); /* aligns text under heading, not under arrow */
+    padding: 0 24px 24px calc(0.5em + 18px + 24px); /* aligns text under heading, not under arrow */
     color: #333;
     font-size: 1rem;
     line-height: 1.6;
@@ -61,7 +63,12 @@
   
   @media (min-width: 700px) {
     .accordion-block .accordion-trigger {
-      padding: 24px 4px;
+      padding: 26px 4px 26px 28px;
+      gap: 20px;
       font-size: 1.25rem;
+    }
+  
+    .accordion-block .accordion-panel-inner {
+      padding-left: calc(0.5em + 20px + 28px);
     }
   }
