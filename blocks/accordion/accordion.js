@@ -29,7 +29,11 @@ export default function decorate(block) {
     const id = `accordion-${Math.random().toString(36).slice(2, 9)}`;
     trigger.setAttribute('aria-controls', `${id}-panel`);
     panelEl.id = `${id}-panel`;
-    trigger.innerHTML = titleHTML;
+
+    const titleSpan = document.createElement('span');
+    titleSpan.className = 'accordion-trigger-text';
+    titleSpan.innerHTML = titleHTML;
+    trigger.appendChild(titleSpan);
 
     let moved = false;
     [...row.children].forEach((c, i) => {
@@ -56,7 +60,6 @@ export default function decorate(block) {
     function openPanel(t, p) {
       t.setAttribute('aria-expanded', 'true');
       p.hidden = false;
-      // force reflow so transition runs from 0
       p.style.maxHeight = '0px';
       requestAnimationFrame(() => {
         p.style.maxHeight = `${p.scrollHeight}px`;
@@ -66,7 +69,6 @@ export default function decorate(block) {
     trigger.addEventListener('click', () => {
       const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-      // close all other panels first
       allTriggers.forEach((t, i) => {
         if (t !== trigger) {
           closePanel(t, allPanels[i]);

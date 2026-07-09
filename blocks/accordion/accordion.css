@@ -16,11 +16,15 @@
   background: transparent;
   border: 0;
   text-align: left;
-  cursor: pointer;
+  cursor: default;          /* changed from pointer */
   font-size: 1.15rem;
   font-weight: 700;
   color: #1a1a1a;
   font-family: inherit;
+}
+
+.accordion-block .accordion-trigger-text {
+  cursor: pointer;          /* only the text shows pointer on hover */
 }
 
 .accordion-block .accordion-trigger:focus-visible {
@@ -28,7 +32,6 @@
   outline-offset: 2px;
 }
 
-/* red chevron before the text — border-drawn, inline with flex, no absolute positioning */
 .accordion-block .accordion-trigger::before {
   content: '';
   display: inline-block;
@@ -37,12 +40,13 @@
   height: 0.5em;
   border-right: 2px solid #d81e25;
   border-bottom: 2px solid #d81e25;
-  transform: rotate(-45deg); /* points right when collapsed */
+  transform: rotate(-45deg);
   transition: transform 0.3s ease;
+  cursor: default;          /* arrow itself stays normal cursor too */
 }
 
 .accordion-block .accordion-trigger[aria-expanded="true"]::before {
-  transform: rotate(45deg); /* points down when expanded */
+  transform: rotate(45deg);
 }
 
 .accordion-block .accordion-panel {
@@ -55,7 +59,7 @@
 }
 
 .accordion-block .accordion-panel-inner {
-  padding: 0 24px 24px calc(0.5em + 18px + 24px); /* aligns text under heading, not under arrow */
+  padding: 0 24px 24px calc(0.5em + 18px + 24px);
   color: #333;
   font-size: 1rem;
   line-height: 1.6;
