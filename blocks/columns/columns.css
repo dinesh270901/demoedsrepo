@@ -1,33 +1,78 @@
-.columns > div {
-  display: flex;
-  flex-direction: column;
+.columns-block {
+  padding: 48px 24px;
 }
 
-.columns img {
+.columns-block .columns-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 900px) {
+  .columns-block .columns-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+}
+/* Image column */
+.columns-block .columns-img-col {
   width: 100%;
 }
 
-.columns > div > div {
-  order: 1;
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
-}
-
-.columns > div > .columns-img-col img {
+.columns-block .columns-img-col picture,
+.columns-block .columns-img-col img {
   display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-  }
+/* Text column */
+.columns-block .columns-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
+
+.columns-block .columns-text-col p {
+  margin: 0;
+}
+
+.columns-block .columns-text-col p strong,
+.columns-block .columns-text-col h2,
+.columns-block .columns-text-col h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+}
+
+.columns-block .columns-text-col p:not(:has(strong)):not(.columns-cta) {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+
+/* CTA link styled like "APPLY FOR ASSISTANCE >" */
+.columns-block .columns-cta {
+  margin-top: 4px;
+}
+
+.columns-block .columns-cta a {
+  color: #d81e25;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.columns-block .columns-cta a:hover {
+  text-decoration: underline;
+}
+
+.columns-block .columns-cta a::after {
+  content: " >";
+}
+/*# sourceMappingURL=columns.css.map */
