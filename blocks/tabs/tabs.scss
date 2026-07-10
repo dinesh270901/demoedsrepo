@@ -1,0 +1,150 @@
+.tab-toyota {
+    .tabs {
+        border: 1px solid var(--color-border-primary, #e0e0e0);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 50px;
+      
+        &-wrapper {
+          padding-top: 50px;
+        }
+      
+        /* ── Tab navigation bar ── */
+        &-nav {
+          display: flex;
+          background: var(--light-color, #bf94da);
+          border-bottom: 1px solid var(--color-border-primary, #a2c1d7);
+          overflow-x: auto;
+          scrollbar-width: none;
+      
+          &::-webkit-scrollbar {
+            display: none;
+          }
+      
+          button {
+            flex: 1; /* ← each button takes equal width */
+            text-align: center;
+            padding: 12px 24px;
+            font-size: var(--body-font-size-s, 0.9rem);
+            font-weight: 500;
+            color: var(--color-text-tertiary, #888);
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: color 0.2s ease, border-color 0.2s ease;
+      
+            &:hover {
+              color: var(--text-color, #000);
+            }
+      
+            &[aria-selected='true'] {
+              color: var(--text-color, #000);
+              border-bottom-color: var(--link-color, #0969da);
+            }
+          }
+        }
+      
+        &-link {
+            flex: 1;
+            text-align: center;
+            padding: 12px 24px;
+            font-size: var(--body-font-size-s, 0.9rem);
+            font-weight: 500;
+            color: var(--color-text-tertiary, #888);
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            transition: color 0.2s ease, border-color 0.2s ease;
+          }
+        /* ── Tab panels ── */
+        .tabs-panels {
+          padding: 1.5rem;
+          background: var(--background-color, #fff);
+        }
+      
+        .tabs-panel {
+          display: none;
+          animation: tabs-fade 0.2s ease;
+      
+          &[aria-hidden='false'] {
+            display: block;
+          }
+      
+          /* ── Content inside panels ── */
+          > *:first-child {
+            margin-top: 0;
+          }
+      
+          > *:last-child {
+            margin-bottom: 0;
+          }
+        }
+      
+        /* ── Mobile ── */
+        @media (max-width: 600px) {
+          .tabs-nav button {
+            padding: 10px 16px;
+            font-size: var(--body-font-size-xs, 0.8rem);
+          }
+      
+          .tabs-panels {
+            padding: 1rem;
+          }
+        }
+      }
+}
+  
+  @keyframes tabs-fade {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+  .tabs:hover {
+    background-color: #e1e1e1;
+    color: #d81e25;
+  }
+  .tabs[aria-selected=true] {
+    background-color: #e1e1e1;
+    color: #d81e25;
+    font-weight: 600;
+  }
+  .tab-toyota-tab[aria-selected=false] {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+  .tab-toyota-tab:focus-visible {
+    outline: 2px solid #d81e25;
+    outline-offset: -2px;
+  }
+  .tab-toyota-panels {
+    padding: 24px 0;
+  }
+  .tab-toyota-panel[aria-hidden=true] {
+    display: none;
+  }
+  .tab-toyota-panel p:first-child {
+    margin-top: 0;
+  }
+  .tab-toyota {
+    /* ── Responsive breakpoints ── */
+    /* Tablet */
+  }
+  @media (width <= 900px) {
+    .tab-toyota .tab-toyota-list {
+      padding-left: 48px;
+    }
+    .tab-toyota .tab-toyota-tab {
+      padding: 0 20px;
+      font-size: 18px;
+      min-height: 64px;
+    }
+  }

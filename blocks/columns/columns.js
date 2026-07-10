@@ -1,41 +1,18 @@
-function isImageColumn(col) {
-  return !!col.querySelector('picture, img');
-}
-
-function decorateColumn(col) {
-  if (isImageColumn(col)) {
-    col.classList.add('columns-img-col');
-  } else {
-    col.classList.add('columns-text-col');
-  }
-}
-
-function decorateCTA(textCol) {
-  if (!textCol) return;
-
-  const paragraphs = [...textCol.querySelectorAll('p')];
-  const last = paragraphs[paragraphs.length - 1];
-
-  if (!last) return;
-
-  const link = last.querySelector('a');
-  if (link && last.textContent.trim() === link.textContent.trim()) {
-    last.classList.add('columns-cta');
-  }
-}
-
 export default function decorate(block) {
-  block.classList.add('columns-block');
-
-  const rows = [...block.children];
-
-  rows.forEach((row) => {
-    row.classList.add('columns-row');
-
-    const cols = [...row.children];
-    cols.forEach((col) => decorateColumn(col));
-
-    const textCol = row.querySelector('.columns-text-col');
-    decorateCTA(textCol);
+  [...block.children].forEach((row) => {
+    [...row.children].forEach((col) => {
+      // tag column containing an image
+      const pic = col.querySelector('picture');
+      if (pic) {
+        col.classList.add('columns-img-col');
+      }
+ 
+      // tag the last paragraph if it contains a link (CTA)
+      const paragraphs = col.querySelectorAll('p');
+      const lastPara = paragraphs[paragraphs.length - 1];
+      if (lastPara && lastPara.querySelector('a')) {
+        lastPara.classList.add('columns-cta');
+      }
+    });
   });
 }

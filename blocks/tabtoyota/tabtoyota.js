@@ -17,11 +17,11 @@ export default function decorate(block) {
   const rows = [...block.children];
 
   const tablist = document.createElement('div');
-  tablist.className = 'tabtoyota-list';
+  tablist.className = 'tab-toyota-list';
   tablist.setAttribute('role', 'tablist');
 
   const panelsWrapper = document.createElement('div');
-  panelsWrapper.className = 'tabtoyota-panels';
+  panelsWrapper.className = 'tab-toyota-panels';
 
   rows.forEach((row, i) => {
     const labelCell = row.children[0];
@@ -37,8 +37,8 @@ export default function decorate(block) {
 
     // tab button
     const button = document.createElement('button');
-    button.className = 'tabtoyota-tab';
-    if (isHighlighted) button.classList.add('tabtoyota-tab-highlight');
+    button.className = 'tab-toyota-tab';
+    if (isHighlighted) button.classList.add('tab-toyota-tab-highlight');
     button.id = `tab-${id}`;
     button.textContent = labelText;
     button.type = 'button';
@@ -49,7 +49,7 @@ export default function decorate(block) {
 
     // tab panel
     const panel = document.createElement('div');
-    panel.className = 'tabtoyota-panel';
+    panel.className = 'tab-toyota-panel';
     panel.id = `tabpanel-${id}`;
     panel.setAttribute('role', 'tabpanel');
     panel.setAttribute('aria-labelledby', `tab-${id}`);
@@ -58,10 +58,10 @@ export default function decorate(block) {
     panelsWrapper.append(panel);
 
     button.addEventListener('click', () => {
-      tablist.querySelectorAll('.tabtoyota-tab').forEach((btn) => {
+      tablist.querySelectorAll('.tab-toyota-tab').forEach((btn) => {
         btn.setAttribute('aria-selected', 'false');
       });
-      panelsWrapper.querySelectorAll('.tabtoyota-panel').forEach((p) => {
+      panelsWrapper.querySelectorAll('.tab-toyota-panel').forEach((p) => {
         p.setAttribute('aria-hidden', 'true');
       });
       button.setAttribute('aria-selected', 'true');

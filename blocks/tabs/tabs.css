@@ -1,24 +1,48 @@
-.tabs {
+@charset "UTF-8";
+.tab-toyota .tabs {
   border: 1px solid var(--color-border-primary, #e0e0e0);
   border-radius: 8px;
   overflow: hidden;
   margin-top: 50px;
 }
-
-/* ── Tab nav bar (jump links) ── */
-.tabs .tabs-nav {
+.tab-toyota .tabs-wrapper {
+  padding-top: 50px;
+}
+.tab-toyota .tabs {
+  /* ── Tab navigation bar ── */
+}
+.tab-toyota .tabs-nav {
   display: flex;
   background: var(--light-color, #bf94da);
   border-bottom: 1px solid var(--color-border-primary, #a2c1d7);
   overflow-x: auto;
   scrollbar-width: none;
 }
-
-.tabs .tabs-nav::-webkit-scrollbar {
+.tab-toyota .tabs-nav::-webkit-scrollbar {
   display: none;
 }
-
-.tabs .tabs-nav .tabs-link {
+.tab-toyota .tabs-nav button {
+  flex: 1; /* ← each button takes equal width */
+  text-align: center;
+  padding: 12px 24px;
+  font-size: var(--body-font-size-s, 0.9rem);
+  font-weight: 500;
+  color: var(--color-text-tertiary, #888);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tab-toyota .tabs-nav button:hover {
+  color: var(--text-color, #000);
+}
+.tab-toyota .tabs-nav button[aria-selected=true] {
+  color: var(--text-color, #000);
+  border-bottom-color: var(--link-color, #0969da);
+}
+.tab-toyota .tabs-link {
   flex: 1;
   text-align: center;
   padding: 12px 24px;
@@ -30,22 +54,97 @@
   white-space: nowrap;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
-
-.tabs .tabs-nav .tabs-link:hover {
-  color: var(--text-color, #000);
+.tab-toyota .tabs {
+  /* ── Tab panels ── */
 }
-
-/* active state, driven by aria-selected from the scroll-spy in tabs.js */
-.tabs .tabs-nav .tabs-link[aria-selected='true'] {
-  color: var(--text-color, #000);
-  font-weight: 700;
-  border-bottom-color: var(--link-color, #0969da);
+.tab-toyota .tabs .tabs-panels {
+  padding: 1.5rem;
+  background: var(--background-color, #fff);
 }
-
-/* ── Mobile ── */
+.tab-toyota .tabs .tabs-panel {
+  display: none;
+  animation: tabs-fade 0.2s ease;
+}
+.tab-toyota .tabs .tabs-panel[aria-hidden=false] {
+  display: block;
+}
+.tab-toyota .tabs .tabs-panel {
+  /* ── Content inside panels ── */
+}
+.tab-toyota .tabs .tabs-panel > *:first-child {
+  margin-top: 0;
+}
+.tab-toyota .tabs .tabs-panel > *:last-child {
+  margin-bottom: 0;
+}
+.tab-toyota .tabs {
+  /* ── Mobile ── */
+}
 @media (max-width: 600px) {
-  .tabs .tabs-nav .tabs-link {
+  .tab-toyota .tabs .tabs-nav button {
     padding: 10px 16px;
     font-size: var(--body-font-size-xs, 0.8rem);
   }
+  .tab-toyota .tabs .tabs-panels {
+    padding: 1rem;
+  }
 }
+
+@keyframes tabs-fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tabs:hover {
+  background-color: #e1e1e1;
+  color: #d81e25;
+}
+
+.tabs[aria-selected=true] {
+  background-color: #e1e1e1;
+  color: #d81e25;
+  font-weight: 600;
+}
+
+.tab-toyota-tab[aria-selected=false] {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.tab-toyota-tab:focus-visible {
+  outline: 2px solid #d81e25;
+  outline-offset: -2px;
+}
+
+.tab-toyota-panels {
+  padding: 24px 0;
+}
+
+.tab-toyota-panel[aria-hidden=true] {
+  display: none;
+}
+
+.tab-toyota-panel p:first-child {
+  margin-top: 0;
+}
+
+.tab-toyota {
+  /* ── Responsive breakpoints ── */
+  /* Tablet */
+}
+
+@media (width <= 900px) {
+  .tab-toyota .tab-toyota-list {
+    padding-left: 48px;
+  }
+  .tab-toyota .tab-toyota-tab {
+    padding: 0 20px;
+    font-size: 18px;
+    min-height: 64px;
+  }
+}/*# sourceMappingURL=tabs.css.map */

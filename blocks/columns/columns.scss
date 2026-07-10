@@ -1,79 +1,107 @@
-.columns-block {
-    padding: 48px 24px;
-  }
-  
-  .columns-block .columns-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  @media (min-width: 900px) {
-    .columns-block .columns-row {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 48px;
-    }
-  }
-  
-  /* Image column */
-  .columns-block .columns-img-col {
-    width: 100%;
-  }
-  
-  .columns-block .columns-img-col picture,
-  .columns-block .columns-img-col img {
-    display: block;
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  
-  /* Text column */
-  .columns-block .columns-text-col {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .columns-block .columns-text-col p {
-    margin: 0;
-  }
-  
-  .columns-block .columns-text-col p strong,
-  .columns-block .columns-text-col h2,
-  .columns-block .columns-text-col h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    line-height: 1.25;
-  }
-  
-  .columns-block .columns-text-col p:not(:has(strong)):not(.columns-cta) {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #1a1a1a;
-  }
-  
-  /* CTA link styled like "APPLY FOR ASSISTANCE >" */
-  .columns-block .columns-cta {
-    margin-top: 4px;
-  }
-  
-  .columns-block .columns-cta a {
-    color: #d81e25;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-  }
-  
-  .columns-block .columns-cta a:hover {
+// Columns block
+// NOTE: this needs to be compiled to plain CSS (e.g. `sass columns.scss
+// columns.css`) before pushing to blocks/columns/columns.css — EDS serves
+// CSS directly with no build step of its own.
+
+$color-heading: #1a1a1a;
+$color-body: #333;
+$color-cta: #b3261e;
+$color-section-bg: #cfe2f3;
+
+$breakpoint-mobile: 768px;
+$content-max-width: 1200px;
+
+@mixin cta-link {
+  color: $color-cta;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: auto;
+
+  &:hover {
     text-decoration: underline;
   }
-  
-  .columns-block .columns-cta a::after {
-    content: ' >';
+}
+
+.columns {
+  &,
+  * {
+    box-sizing: border-box;
   }
-  
+
+  // row of cards
+  > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: $content-max-width;
+    margin: 0 auto;
+    padding: 20px 24px 60px;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    // each individual column/card
+    > div {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  // image inside each column
+  picture,
+  img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  // heading, e.g. "Clarifying Your Specific Needs"
+  h3,
+  strong {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-heading;
+    margin: 0 0 12px;
+  }
+
+  // body paragraph
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: $color-body;
+    margin: 0 0 16px;
+  }
+
+  // CTA link, e.g. "ASSESS YOUR NEEDS >"
+  a {
+    @include cta-link;
+  }
+}
+
+.columns-cta a {
+  @include cta-link;
+}
+
+// section background wrapping this block
+.section.light-blue {
+  background-color: $color-section-bg;
+  padding: 60px 0;
+
+  h2 {
+    max-width: $content-max-width;
+    margin: 0 auto;
+    padding: 0 24px 30px;
+    font-size: 30px;
+    font-weight: 700;
+    color: $color-heading;
+  }
+}
