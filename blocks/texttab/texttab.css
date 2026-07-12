@@ -1,0 +1,273 @@
+.texttab,
+.texttab * {
+  box-sizing: border-box;
+}
+ 
+.texttab-wrapper {
+  overflow: visible !important;
+}
+ 
+.texttab {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background: #cfe2f3;
+  border: none;
+  z-index: 100;
+  transition: box-shadow 0.2s ease;
+}
+ 
+.texttab.is-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #cfe2f3;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 12%);
+}
+ 
+.texttab-placeholder {
+  display: none;
+}
+ 
+.texttab-placeholder.is-active {
+  display: block;
+}
+ 
+.texttab > div {
+  flex: 0 0 auto;
+}
+ 
+.texttab > div > div {
+  padding: 18px 22px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .2s ease;
+}
+ 
+.texttab a,
+.texttab p {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #202124;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+.texttab > div > div:hover {
+  background: transparent;
+}
+ 
+.texttab > div > div:hover a {
+  color: #b3261e;
+}
+ 
+.texttab > div > div.active {
+  background: #ececec;
+}
+ 
+.texttab > div > div.active a {
+  color: #b3261e;
+  font-weight: 700;
+}
+ 
+/* ==========================
+   MOBILE
+   ========================== */
+@media (max-width: 768px) {
+ 
+  .texttab {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+ 
+    background: #fff;
+ 
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+ 
+    /* Remove these to prevent jumping */
+    scroll-snap-type: none;
+    touch-action: auto;
+    overscroll-behavior-x: auto;
+  }
+ 
+  .texttab::-webkit-scrollbar {
+    display: none;
+  }
+ 
+  .texttab > div {
+    flex: 0 0 170px;
+  }
+ 
+  .texttab > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 170px;
+    padding: 14px 20px;
+    background: transparent;
+  }
+ 
+  .texttab > div > div.active {
+    background: #e6e6e6;
+  }
+ 
+  .texttab a,
+  .texttab p {
+    font-size: 16px;
+    white-space: nowrap;
+    color: #202124;
+  }
+ 
+  .texttab > div > div.active a {
+    color: #202124;
+    font-weight: 700;
+  }
+}.texttab,
+.texttab * {
+  box-sizing: border-box;
+}
+ 
+.texttab-wrapper {
+  overflow: visible !important;
+}
+ 
+.texttab {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background: #cfe2f3;
+  border: none;
+  z-index: 100;
+  transition: box-shadow 0.2s ease;
+}
+ 
+.texttab.is-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #cfe2f3;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 12%);
+}
+ 
+.texttab-placeholder {
+  display: none;
+}
+ 
+.texttab-placeholder.is-active {
+  display: block;
+}
+ 
+.texttab > div {
+  flex: 0 0 auto;
+}
+ 
+.texttab > div > div {
+  padding: 18px 22px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .2s ease;
+}
+ 
+.texttab a,
+.texttab p {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #202124;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+.texttab > div > div:hover {
+  background: transparent;
+}
+ 
+.texttab > div > div:hover a {
+  color: #b3261e;
+}
+ 
+.texttab > div > div.active {
+  background: #ececec;
+}
+ 
+.texttab > div > div.active a {
+  color: #b3261e;
+  font-weight: 700;
+}
+ 
+/* ==========================
+   MOBILE
+   ========================== */
+@media (max-width: 768px) {
+ 
+  .texttab {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+ 
+    background: #fff;
+ 
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+ 
+    /* Remove these to prevent jumping */
+    scroll-snap-type: none;
+    touch-action: auto;
+    overscroll-behavior-x: auto;
+  }
+ 
+  .texttab::-webkit-scrollbar {
+    display: none;
+  }
+ 
+  .texttab > div {
+    flex: 0 0 170px;
+  }
+ 
+  .texttab > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 170px;
+    padding: 14px 20px;
+    background: transparent;
+  }
+ 
+  .texttab > div > div.active {
+    background: #e6e6e6;
+  }
+ 
+  .texttab a,
+  .texttab p {
+    font-size: 16px;
+    white-space: nowrap;
+    color: #202124;
+  }
+ 
+  .texttab > div > div.active a {
+    color: #202124;
+    font-weight: 700;
+  }
+}

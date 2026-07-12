@@ -4,6 +4,7 @@
   border-radius: 8px;
   overflow: hidden;
   margin-top: 50px;
+  --light-color: #c7e3f9;
 }
 .tab-toyota .tabs-wrapper {
   padding-top: 50px;
