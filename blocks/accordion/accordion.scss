@@ -17,7 +17,7 @@
     border: 0;
     text-align: left;
     cursor: default;
-    font-size: 1.15rem;
+    font-size: 24px;
     font-weight: 700;
     color: #1a1a1a;
     font-family: inherit;
@@ -60,7 +60,7 @@
   .accordion-block .accordion-panel-inner {
     padding: 0 24px 24px calc(0.5em + 18px + 24px);
     color: #333;
-    font-size: 1rem;
+    font-size: 24px;
     line-height: 1.6;
   }
   
@@ -68,7 +68,7 @@
     .accordion-block .accordion-trigger {
       padding: 26px 4px 26px 28px;
       gap: 20px;
-      font-size: 1.25rem;
+      font-size: 24px;
     }
   
     .accordion-block .accordion-panel-inner {
