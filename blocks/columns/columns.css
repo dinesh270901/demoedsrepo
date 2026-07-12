@@ -11,16 +11,16 @@
   margin: 0 auto;
   padding: 20px 24px 60px;
 }
+.columns > div > div {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+}
 @media (max-width: 768px) {
   .columns > div {
     flex-direction: column;
     gap: 32px;
   }
-}
-.columns > div > div {
-  flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
 }
 .columns picture,
 .columns img {
@@ -66,10 +66,8 @@
   text-decoration: none;
   margin-top: auto;
 }
-.columns-cta a:hover {
-  text-decoration: underline;
-}
 
+/* section background wrapping this block */
 .section.light-blue {
   background-color: #cfe2f3;
   padding: 60px 0;

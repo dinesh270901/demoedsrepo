@@ -1,56 +1,28 @@
-// Columns block
-// NOTE: this needs to be compiled to plain CSS (e.g. `sass columns.scss
-// columns.css`) before pushing to blocks/columns/columns.css — EDS serves
-// CSS directly with no build step of its own.
-
-$color-heading: #1a1a1a;
-$color-body: #333;
-$color-cta: #b3261e;
-$color-section-bg: #cfe2f3;
-
-$breakpoint-mobile: 768px;
-$content-max-width: 1200px;
-
-@mixin cta-link {
-  color: $color-cta;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  margin-top: auto;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
 .columns {
   &,
   * {
     box-sizing: border-box;
   }
 
-  // row of cards
   > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 40px;
-    max-width: $content-max-width;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px 24px 60px;
 
-    @media (max-width: $breakpoint-mobile) {
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    // each individual column/card
+    // each column
     > div {
       flex: 1 1 300px;
       display: flex;
       flex-direction: column;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 32px;
     }
   }
 
@@ -64,12 +36,12 @@ $content-max-width: 1200px;
     margin-bottom: 20px;
   }
 
-  // heading, e.g. "Clarifying Your Specific Needs"
+  // heading e.g. "Clarifying Your Specific Needs"
   h3,
   strong {
     font-size: 20px;
     font-weight: 700;
-    color: $color-heading;
+    color: #1a1a1a;
     margin: 0 0 12px;
   }
 
@@ -77,31 +49,47 @@ $content-max-width: 1200px;
   p {
     font-size: 16px;
     line-height: 1.5;
-    color: $color-body;
+    color: #333;
     margin: 0 0 16px;
   }
 
-  // CTA link, e.g. "ASSESS YOUR NEEDS >"
+  // CTA link e.g. "ASSESS YOUR NEEDS >"
   a {
-    @include cta-link;
+    color: #b3261e;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: auto;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 .columns-cta a {
-  @include cta-link;
+  color: #b3261e;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: auto;
 }
 
-// section background wrapping this block
+/* section background wrapping this block */
 .section.light-blue {
-  background-color: $color-section-bg;
+  background-color: #cfe2f3;
   padding: 60px 0;
 
   h2 {
-    max-width: $content-max-width;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px 30px;
     font-size: 30px;
     font-weight: 700;
-    color: $color-heading;
+    color: #1a1a1a;
   }
 }

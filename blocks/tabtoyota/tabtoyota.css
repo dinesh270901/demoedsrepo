@@ -132,17 +132,4 @@
     font-size: 14px;
     min-height: 48px;
   }
-}
-
-.tabs-link {
-  flex: 1;
-  text-align: center;
-  padding: 12px 24px;
-  font-size: var(--body-font-size-s, 0.9rem);
-  font-weight: 500;
-  color: var(--color-text-tertiary, #888);
-  text-decoration: none;
-  border-bottom: 3px solid transparent;
-  white-space: nowrap;
-  transition: color 0.2s ease, border-color 0.2s ease;
 }/*# sourceMappingURL=tabtoyota.css.map */
