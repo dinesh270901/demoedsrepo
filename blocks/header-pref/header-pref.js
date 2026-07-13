@@ -2,27 +2,60 @@
  * Header block – recreates the Toyota/Lexus dual-brand header
  * seen at toyota.com/preferences
  *
- * Expected authoring (table in Google Doc / Word, each row = one brand link):
- * | Link                        | Alt text     | Image                          | Class       |
- * |------------------------------|--------------|---------------------------------|-------------|
- * | https://www.toyota.com       | Toyota Logo  | /content/dam/.../toyota-logo.svg | toyota-logo |
- * | https://www.lexus.com        | Lexus Logo   | /content/dam/.../lexus-logo.jpg  | lexus-logo  |
+ * Actual da.live authoring (simple, matches how content authors work):
  *
- * A trailing row (optional) with just a heading text becomes the title.
+ *  -----------------------------------------------------------
+ *  | header-pref                                              |
+ *  -----------------------------------------------------------
+ *  | [Toyota logo image, hyperlinked to toyota.com]           |
+ *  | [Lexus logo image, hyperlinked to lexus.com]             |
+ *  -----------------------------------------------------------
+ *  | My Toyota & Lexus Communications Profile                 |
+ *  -----------------------------------------------------------
+ *
+ * Rules:
+ *  - Any row containing image(s) is treated as a "logo row" — each
+ *    image (optionally wrapped in a link by the author) becomes one
+ *    brand logo. Images can be in the same cell/row or split into
+ *    separate cells; both work.
+ *  - Brand class (toyota-logo / lexus-logo) is inferred from the
+ *    image src or alt text. Falls back to authoring order
+ *    (1st image = toyota-logo, 2nd = lexus-logo) if brand can't
+ *    be detected.
+ *  - If the author didn't wrap an image in a link, a sensible
+ *    default href is used based on the detected brand.
+ *  - A row with only text (no image) is treated as the title.
  */
-export default function decorate(block) {
+
+const DEFAULT_HREFS = {
+    'toyota-logo': 'https://www.toyota.com',
+    'lexus-logo': 'https://www.lexus.com',
+  };
+  
+  function detectBrandClass(src = '', alt = '', fallbackIndex = 0) {
+    const haystack = `${src} ${alt}`.toLowerCase();
+    if (haystack.includes('lexus')) return 'lexus-logo';
+    if (haystack.includes('toyota')) return 'toyota-logo';
+    return fallbackIndex === 0 ? 'toyota-logo' : 'lexus-logo';
+  }
+  
+  export default function decorate(block) {
     const rows = [...block.children];
-    const brandRows = [];
     let titleText = 'My Toyota & Lexus Communications Profile';
+    const imageEls = [];
   
     rows.forEach((row) => {
       const cells = [...row.children];
-      // A single-cell row is treated as the header title
-      if (cells.length === 1) {
-        titleText = cells[0].textContent.trim() || titleText;
+      const rowImages = row.querySelectorAll('picture, img');
+  
+      if (rowImages.length === 0) {
+        // No image in this row -> treat as title text
+        const text = cells.map((c) => c.textContent.trim()).join(' ').trim();
+        if (text) titleText = text;
         return;
       }
-      brandRows.push(cells);
+  
+      rowImages.forEach((el) => imageEls.push(el));
     });
   
     block.textContent = '';
@@ -40,30 +73,27 @@ export default function decorate(block) {
     logoWrap.setAttribute('role', 'img');
     logoWrap.setAttribute('aria-label', 'Brand Logo');
   
-    brandRows.forEach((cells) => {
-      const [linkCell, altCell, imgCell, classCell] = cells;
+    imageEls.forEach((el, index) => {
+      const picture = el.tagName === 'PICTURE' ? el : null;
+      const img = picture ? picture.querySelector('img') : el;
+      if (!img) return;
   
-      const href = linkCell?.querySelector('a')?.href || linkCell?.textContent.trim();
-      const alt = altCell?.textContent.trim() || '';
-      const imgEl = imgCell?.querySelector('img');
-      const src = imgEl?.getAttribute('src') || imgCell?.textContent.trim();
-      const brandClass = classCell?.textContent.trim() || '';
+      const src = img.getAttribute('src') || '';
+      const alt = img.getAttribute('alt') || '';
+      const brandClass = detectBrandClass(src, alt, index);
   
-      if (!href || !src) return;
+      // Reuse an existing author-added link if present, otherwise fall back
+      const existingLink = el.closest('a');
+      const href = existingLink?.getAttribute('href') || DEFAULT_HREFS[brandClass];
   
       const a = document.createElement('a');
       a.href = href;
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
-      if (brandClass) a.className = brandClass;
+      a.className = brandClass;
   
-      const logoImg = document.createElement('img');
-      logoImg.src = src;
-      logoImg.alt = alt;
-      logoImg.loading = 'eager';
-      logoImg.decoding = 'async';
-  
-      a.append(logoImg);
+      // Move the actual picture/img node (keeps optimized <picture> sources intact)
+      a.append(picture || img);
       logoWrap.append(a);
     });
   
