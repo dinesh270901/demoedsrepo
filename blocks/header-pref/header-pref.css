@@ -1,44 +1,49 @@
-/* header-pref block styles — mirrors toyota.com/preferences header */
+/* header-pref block styles — mirrors toyota.com/preferences header
+   Actual DOM structure:
+   .header-pref .toyota-logo
+     > p (Toyota logo)
+     > p (Lexus logo, contains <picture><img>)
+*/
 
-.header-pref {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Row 1: logo wrap (Toyota + Lexus side by side) */
-  .header-pref > div:first-child {
+.header-pref .toyota-logo {
     display: flex;
     align-items: center;
   }
   
-  .header-pref > div:first-child > div {
+  .header-pref .toyota-logo p {
     display: flex;
     align-items: center;
+    margin: 0;
   }
   
   /* vertical divider between the two logos, like the "|" on the live site */
-  .header-pref > div:first-child > div + div {
-    border-left: 1px solid #d3d3d3;
+  .header-pref .toyota-logo p + p {
     margin-left: 15px;
     padding-left: 15px;
+    border-left: 1px solid #d3d3d3;
   }
   
   .header-pref img,
   .header-pref svg {
     max-width: 80px;
+    width: 80px;
+    height: auto;
     vertical-align: middle;
   }
   
   /* Lexus logo nudge to match the reference site's fine-tuning */
-  .header-pref > div:first-child > div:last-child img {
+  .header-pref .toyota-logo p:last-child img {
     position: relative;
     top: 2px;
   }
   
-  /* Row 2: caption text below the logos */
-  .header-pref > div:last-child {
+  /* Caption text below the logos — adjust selector once you confirm
+     the exact element wrapping "My Toyota & Lexus Communications Profile" */
+  .header-pref-wrapper h1,
+  .header-pref-wrapper .header-pref-title {
     font-size: 20px;
     line-height: 1.4;
     color: #1a1a1a;
+    font-weight: 400;
     margin-top: 16px;
   }
