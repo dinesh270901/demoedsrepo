@@ -100,19 +100,8 @@
   }
   
   @media (max-width: 767px) {
-    .header-pref .header-wrap.row {
-      justify-content: center;
-      text-align: center;
-    }
-  
-    .header-pref .col {
-      justify-content: center;
-      width: 100%;
-    }
-  
     .header-pref .header-cnt .header-title {
       flex-basis: 100%;
       order: 3;
-      text-align: center;
     }
   }
