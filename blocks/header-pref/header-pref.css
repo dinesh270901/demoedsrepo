@@ -1,0 +1,44 @@
+/* header-pref block styles — mirrors toyota.com/preferences header */
+
+.header-pref {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Row 1: logo wrap (Toyota + Lexus side by side) */
+  .header-pref > div:first-child {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-pref > div:first-child > div {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* vertical divider between the two logos, like the "|" on the live site */
+  .header-pref > div:first-child > div + div {
+    border-left: 1px solid #d3d3d3;
+    margin-left: 15px;
+    padding-left: 15px;
+  }
+  
+  .header-pref img,
+  .header-pref svg {
+    max-width: 80px;
+    vertical-align: middle;
+  }
+  
+  /* Lexus logo nudge to match the reference site's fine-tuning */
+  .header-pref > div:first-child > div:last-child img {
+    position: relative;
+    top: 2px;
+  }
+  
+  /* Row 2: caption text below the logos */
+  .header-pref > div:last-child {
+    font-size: 20px;
+    line-height: 1.4;
+    color: #1a1a1a;
+    margin-top: 16px;
+  }
