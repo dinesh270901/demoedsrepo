@@ -4,7 +4,6 @@
 }
 .texttab {
   display: flex;
-  padding-left: 62px;
   flex-direction: row;
   align-items: center;
   width: 100%;
@@ -12,10 +11,6 @@
   border: none;
   z-index: 100;
   transition: box-shadow 0.2s ease;
-  cursor: grab;
-}
-.texttab:active {
-  cursor: grabbing;
 }
 .texttab.is-fixed {
   position: fixed;

@@ -1,116 +1,110 @@
 .texttab {
-    &,
-    * {
-      box-sizing: border-box;
-    }
-  
-    display: flex;
-    padding-left: 62px;
-    flex-direction: row;
-    align-items: center;
+  &,
+  * {
+    box-sizing: border-box;
+  }
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background: #cfe2f3;
+  border: none;
+  z-index: 100;
+  transition: box-shadow 0.2s ease;
+
+  &.is-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
+    z-index: 1000;
     background: #cfe2f3;
-    border: none;
-    z-index: 100;
-    transition: box-shadow 0.2s ease;
-    cursor: grab; // hand cursor when hovering the bar itself
-  
-    &:active {
-      cursor: grabbing; // while actively dragging
-    }
-  
-    &.is-fixed {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      z-index: 1000;
-      background: #cfe2f3;
-      box-shadow: 0 1px 4px rgb(0 0 0 / 12%);
-    }
-  
+    box-shadow: 0 1px 4px rgb(0 0 0 / 12%);
+  }
+
+  > div {
+    flex: 0 0 auto;
+
     > div {
-      flex: 0 0 auto;
-  
-      > div {
-        padding: 18px 22px;
-        cursor: pointer; // keep pointer on the actual tab link
-        user-select: none;
-        -webkit-user-select: none;
-        -webkit-tap-highlight-color: transparent;
-        transition: background-color .2s ease;
-  
-        &:hover {
-          background: transparent;
-  
-          a {
-            color: #b3261e;
-          }
+      padding: 18px 22px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color .2s ease;
+
+      &:hover {
+        background: transparent;
+
+        a {
+          color: #b3261e;
         }
-  
+      }
+
+      &.active {
+        background: #ececec;
+
+        a {
+          color: #b3261e;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  a,
+  p {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #202124;
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ==========================
+     MOBILE
+     ========================== */
+  @media (max-width: 768px) {
+    /* Keep sticky tab identical to normal mobile tab */
+    &.is-fixed {
+      background: #fff;
+      box-shadow: none;
+      border: none;
+
+      > div > div {
+        background: transparent;
+
         &.active {
-          background: #ececec;
-  
+          background: #e6e6e6;
+
           a {
-            color: #b3261e;
+            color: #202124;
             font-weight: 700;
           }
         }
       }
-    }
-  
-    a,
-    p {
-      margin: 0;
-      padding: 0;
-      text-decoration: none;
-      color: #202124;
-      font-size: 18px;
-      font-weight: 500;
-      white-space: nowrap;
-      -webkit-tap-highlight-color: transparent;
-    }
-  
-    /* ==========================
-       MOBILE
-       ========================== */
-    @media (max-width: 768px) {
-      /* Keep sticky tab identical to normal mobile tab */
-      &.is-fixed {
-        background: #fff;
-        box-shadow: none;
-        border: none;
-  
-        > div > div {
-          background: transparent;
-  
-          &.active {
-            background: #e6e6e6;
-  
-            a {
-              color: #202124;
-              font-weight: 700;
-            }
-          }
-        }
-  
-        a,
-        p {
-          color: #202124;
-        }
+
+      a,
+      p {
+        color: #202124;
       }
     }
   }
-  
-  .texttab-wrapper {
-    overflow: visible !important;
+}
+
+.texttab-wrapper {
+  overflow: visible !important;
+}
+
+.texttab-placeholder {
+  display: none;
+
+  &.is-active {
+    display: block;
   }
-  
-  .texttab-placeholder {
-    display: none;
-  
-    &.is-active {
-      display: block;
-    }
-  }
+}
