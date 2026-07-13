@@ -46,7 +46,15 @@ const DEFAULT_HREFS = {
   
     rows.forEach((row) => {
       const cells = [...row.children];
-      const rowImages = row.querySelectorAll('picture, img');
+  
+      // Only count top-level media: a <picture> wrapper, OR a bare <img>
+      // that is NOT already nested inside a <picture>. This avoids matching
+      // the same logo twice (once as <picture>, once as its inner <img>),
+      // which previously corrupted brand detection/ordering.
+      const rowImages = [...row.querySelectorAll('picture, img')].filter((el) => {
+        if (el.tagName === 'IMG') return !el.closest('picture');
+        return true;
+      });
   
       if (rowImages.length === 0) {
         // No image in this row -> treat as title text
