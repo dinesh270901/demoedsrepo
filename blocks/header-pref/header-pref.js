@@ -112,7 +112,7 @@ const DEFAULT_HREFS = {
     const headerCnt = document.createElement('div');
     headerCnt.className = 'header-cnt col';
   
-    const title = document.createElement('h1');
+    const title = document.createElement('p');
     title.className = 'header-title';
     title.textContent = titleText;
   
