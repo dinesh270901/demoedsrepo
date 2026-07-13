@@ -1,25 +1,85 @@
+/**
+ * Header block – recreates the Toyota/Lexus dual-brand header
+ * seen at toyota.com/preferences
+ *
+ * Expected authoring (table in Google Doc / Word, each row = one brand link):
+ * | Link                        | Alt text     | Image                          | Class       |
+ * |------------------------------|--------------|---------------------------------|-------------|
+ * | https://www.toyota.com       | Toyota Logo  | /content/dam/.../toyota-logo.svg | toyota-logo |
+ * | https://www.lexus.com        | Lexus Logo   | /content/dam/.../lexus-logo.jpg  | lexus-logo  |
+ *
+ * A trailing row (optional) with just a heading text becomes the title.
+ */
 export default function decorate(block) {
-    // Actual structure: one div (e.g. .toyota-logo) containing two <p> tags —
-    // first <p> is the Toyota logo, second <p> is the Lexus logo (picture/img)
-    const logoWrap = block.querySelector('.toyota-logo');
+    const rows = [...block.children];
+    const brandRows = [];
+    let titleText = 'My Toyota & Lexus Communications Profile';
   
-    if (logoWrap) {
-      const logoParas = [...logoWrap.querySelectorAll(':scope > p')];
+    rows.forEach((row) => {
+      const cells = [...row.children];
+      // A single-cell row is treated as the header title
+      if (cells.length === 1) {
+        titleText = cells[0].textContent.trim() || titleText;
+        return;
+      }
+      brandRows.push(cells);
+    });
   
-      logoParas.forEach((p, i) => {
-        p.classList.add(i === 0 ? 'toyota-logo-item' : 'lexus-logo-item');
+    block.textContent = '';
   
-        const img = p.querySelector('img');
-        if (img && !img.alt) {
-          img.alt = i === 0 ? 'Toyota' : 'Lexus';
-        }
-      });
-    }
+    // --- header-wrap row ---
+    const headerWrap = document.createElement('div');
+    headerWrap.className = 'header-wrap row';
   
-    // If the caption text lives inside this block as its own row/paragraph,
-    // tag it so header-pref.css can target it directly
-    const caption = block.querySelector('p:not(.toyota-logo-item):not(.lexus-logo-item)');
-    if (caption) {
-      caption.classList.add('header-pref-title');
-    }
+    // --- col: logo-wrap ---
+    const col = document.createElement('div');
+    col.className = 'col';
+  
+    const logoWrap = document.createElement('div');
+    logoWrap.className = 'logo-wrap';
+    logoWrap.setAttribute('role', 'img');
+    logoWrap.setAttribute('aria-label', 'Brand Logo');
+  
+    brandRows.forEach((cells) => {
+      const [linkCell, altCell, imgCell, classCell] = cells;
+  
+      const href = linkCell?.querySelector('a')?.href || linkCell?.textContent.trim();
+      const alt = altCell?.textContent.trim() || '';
+      const imgEl = imgCell?.querySelector('img');
+      const src = imgEl?.getAttribute('src') || imgCell?.textContent.trim();
+      const brandClass = classCell?.textContent.trim() || '';
+  
+      if (!href || !src) return;
+  
+      const a = document.createElement('a');
+      a.href = href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      if (brandClass) a.className = brandClass;
+  
+      const logoImg = document.createElement('img');
+      logoImg.src = src;
+      logoImg.alt = alt;
+      logoImg.loading = 'eager';
+      logoImg.decoding = 'async';
+  
+      a.append(logoImg);
+      logoWrap.append(a);
+    });
+  
+    col.append(logoWrap);
+    headerWrap.append(col);
+  
+    // --- header-cnt col: title ---
+    const headerCnt = document.createElement('div');
+    headerCnt.className = 'header-cnt col';
+  
+    const title = document.createElement('h1');
+    title.className = 'header-title';
+    title.textContent = titleText;
+  
+    headerCnt.append(title);
+    headerWrap.append(headerCnt);
+  
+    block.append(headerWrap);
   }
