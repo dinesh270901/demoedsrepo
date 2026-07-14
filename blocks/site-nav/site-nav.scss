@@ -11,11 +11,18 @@ $nav-muted: #6e6e6e;
 $nav-border: #e6e6e6;
 $nav-max-width: 1400px;
 
+$nav-brand-gap: 10px;
+$nav-brand-logo-height: 28px;
+$nav-brand-text-size: 22px;
+$nav-brand-text-weight: 800;
+$nav-brand-text-tracking: 0.02em;
+
 $nav-item-gap: 32px;
 $nav-item-font-size: 16px;
 $nav-item-padding-y: 22px;
 $nav-underline-height: 3px;
 $nav-underline-transition: 0.15s ease;
+$nav-item-icon-size: 22px;
 
 $nav-panel-shadow: 0 12px 24px rgb(0 0 0 / 8%);
 $nav-account-panel-width: 420px;
@@ -72,14 +79,21 @@ $nav-mobile-breakpoint: 900px;
   .nav-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: $nav-brand-gap;
     text-decoration: none;
     flex-shrink: 0;
 
     img {
-      height: 28px;
+      height: $nav-brand-logo-height;
       width: auto;
       display: block;
+    }
+
+    &-text {
+      font-size: $nav-brand-text-size;
+      font-weight: $nav-brand-text-weight;
+      color: var(--nav-text);
+      letter-spacing: $nav-brand-text-tracking;
     }
   }
 
@@ -100,7 +114,6 @@ $nav-mobile-breakpoint: 900px;
     display: flex;
     align-items: center;
 
-    // --- Account (right-aligned) ---
     &.nav-item-account {
       margin-left: auto;
     }
@@ -165,8 +178,8 @@ $nav-mobile-breakpoint: 900px;
   }
 
   .nav-item-icon {
-    width: 22px;
-    height: 22px;
+    width: $nav-item-icon-size;
+    height: $nav-item-icon-size;
     display: block;
   }
 

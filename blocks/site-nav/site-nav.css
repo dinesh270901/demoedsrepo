@@ -33,6 +33,12 @@
   width: auto;
   display: block;
 }
+.site-nav .nav-brand-text {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--nav-text);
+  letter-spacing: 0.02em;
+}
 .site-nav .nav-menu {
   display: flex;
   align-items: center;
