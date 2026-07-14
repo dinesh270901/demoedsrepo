@@ -75,6 +75,8 @@
   .header-pref .header-cnt .header-title {
     font-size: 20px;
     text-align: center;
+    padding-bottom: 10px;
+    padding-right: 150px;
   }
 }
 @media (max-width: 767px) {
