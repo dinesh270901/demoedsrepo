@@ -1,0 +1,154 @@
+// header block – dual brand header (Toyota / Lexus)
+
+// -----------------------------------------------------------------------
+// Variables
+// -----------------------------------------------------------------------
+$header-bg: #fff;
+$header-border-color: #e6e6e6;
+
+$header-padding-mobile: 16px 24px;
+$header-padding-desktop: 20px 48px;
+
+$header-logo-gap: 24px;
+$header-divider-color: #ccc;
+$header-divider-height: 22px;
+$header-divider-width: 1px;
+
+$toyota-logo-height: 32px;
+$lexus-logo-height: 20px;
+
+$header-title-color: #1a1a1a;
+$header-title-font-weight: 400;
+$header-title-line-height: 1.3;
+$header-title-font-size-mobile: 15px;
+$header-title-font-size-tablet: 18px;
+$header-title-font-size-desktop: 20px;
+
+$logo-hover-opacity: 0.8;
+
+$breakpoint-desktop: 768px;
+$breakpoint-mobile-max: 767px;
+
+// -----------------------------------------------------------------------
+// Block
+// -----------------------------------------------------------------------
+.header-pref {
+  --header-logo-gap: #{$header-logo-gap};
+  background: $header-bg;
+  border-bottom: 1px solid $header-border-color;
+  padding: $header-padding-mobile;
+
+  .header-wrap.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .col {
+    display: flex;
+    align-items: center;
+  }
+
+  // logo cluster
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--header-logo-gap);
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      line-height: 0;
+
+      &:hover,
+      &:focus-visible {
+        img {
+          opacity: $logo-hover-opacity;
+        }
+      }
+
+      // Toyota logo (svg)
+      &.toyota-logo {
+        img {
+          height: $toyota-logo-height;
+          width: auto;
+          display: block;
+        }
+      }
+
+      // Lexus logo (jpg) with divider before it
+      &.lexus-logo {
+        position: relative;
+        padding-left: var(--header-logo-gap);
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: $header-divider-height;
+          width: $header-divider-width;
+          background: $header-divider-color;
+        }
+
+        img {
+          height: $lexus-logo-height;
+          width: auto;
+          display: block;
+        }
+      }
+    }
+  }
+
+  // title
+  .header-cnt {
+    flex: 1 1 auto;
+
+    .header-title {
+      font-size: $header-title-font-size-tablet;
+      font-weight: $header-title-font-weight;
+      line-height: $header-title-line-height;
+      color: $header-title-color;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $header-padding-desktop;
+
+    .header-wrap.row {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    .header-cnt .header-title {
+      font-size: $header-title-font-size-desktop;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile-max) {
+    .header-wrap.row {
+      justify-content: flex-start;
+      text-align: center;
+    }
+
+    .col {
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    .header-cnt .header-title {
+      flex-basis: 100%;
+      order: 3;
+      text-align: center;
+      font-size: $header-title-font-size-mobile;
+    }
+  }
+}
