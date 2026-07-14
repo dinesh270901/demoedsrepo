@@ -87,6 +87,7 @@
   @media (min-width: 768px) {
     .header-pref {
       padding: 20px 48px;
+      text-align: center;
     }
   
     .header-pref .header-wrap.row {
