@@ -103,7 +103,7 @@
   @media (max-width: 767px) {
     .header-pref .header-wrap.row {
       justify-content: flex-start;
-      text-align: left;
+      text-align: center;
     }
   
     .header-pref .col {
