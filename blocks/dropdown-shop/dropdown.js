@@ -1,12 +1,12 @@
 /**
- * mega-menu – standalone block for nav dropdown content
+ * dropdown-shop – standalone block for nav dropdown content
  * (used on fragment pages like /nav/shop, /nav/support-services)
  *
  * ---------------------------------------------------------------------
  * da.live authoring (table):
  * ---------------------------------------------------------------------
  *
- * Row 1 (block name):   Mega Menu
+ * Row 1 (block name):   Dropdown Shop
  *
  * Column rows — 2 cells: Title | a bulleted list of links
  *   | Shopping Tools | • Build & Price
@@ -29,14 +29,14 @@
 
 function buildColumn(titleText, listEl) {
     const col = document.createElement('div');
-    col.className = 'mega-menu-col';
+    col.className = 'dropdown-shop-col';
   
     const heading = document.createElement('p');
-    heading.className = 'mega-menu-col-title';
+    heading.className = 'dropdown-shop-col-title';
     heading.textContent = titleText;
     col.append(heading);
   
-    listEl.className = 'mega-menu-col-list';
+    listEl.className = 'dropdown-shop-col-list';
     col.append(listEl);
   
     return col;
@@ -44,20 +44,20 @@ function buildColumn(titleText, listEl) {
   
   function buildCta(titleText, descEl, buttonLink) {
     const cta = document.createElement('div');
-    cta.className = 'mega-menu-cta';
+    cta.className = 'dropdown-shop-cta';
   
     const heading = document.createElement('p');
-    heading.className = 'mega-menu-cta-title';
+    heading.className = 'dropdown-shop-cta-title';
     heading.textContent = titleText;
     cta.append(heading);
   
     if (descEl) {
-      descEl.className = 'mega-menu-cta-desc';
+      descEl.className = 'dropdown-shop-cta-desc';
       cta.append(descEl);
     }
   
     if (buttonLink) {
-      buttonLink.className = 'mega-menu-cta-btn';
+      buttonLink.className = 'dropdown-shop-cta-btn';
       cta.append(buttonLink);
     }
   
@@ -69,7 +69,7 @@ function buildColumn(titleText, listEl) {
     block.textContent = '';
   
     const wrapper = document.createElement('div');
-    wrapper.className = 'mega-menu-inner';
+    wrapper.className = 'dropdown-shop-inner';
   
     rows.forEach((row) => {
       const cells = [...row.children];

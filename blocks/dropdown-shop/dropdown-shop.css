@@ -1,6 +1,102 @@
 /* dropdown-shop – standalone dropdown content block (columns + CTA card) */
 
 .dropdown-shop {
+  --dropdown-shop-text: #1a1a1a;
+  --dropdown-shop-muted: #6e6e6e;
+  --dropdown-shop-gap: 64px;
+  --dropdown-shop-max-width: 1400px;
+}
+
+.dropdown-shop .dropdown-shop-inner {
+  max-width: var(--dropdown-shop-max-width);
+  margin: 0 auto;
+  padding: 40px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dropdown-shop-gap);
+}
+
+/* --- Link columns --- */
+.dropdown-shop-col {
+  flex: 1 1 0;
+  min-width: 160px;
+}
+
+.dropdown-shop-col-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--dropdown-shop-muted);
+  margin: 0 0 16px;
+}
+
+.dropdown-shop-col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dropdown-shop-col-list a {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--dropdown-shop-text);
+  text-decoration: none;
+}
+
+.dropdown-shop-col-list a:hover {
+  text-decoration: underline;
+}
+
+/* --- CTA card --- */
+.dropdown-shop-cta {
+  flex: 1 1 0;
+  min-width: 220px;
+}
+
+.dropdown-shop-cta-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--dropdown-shop-text);
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.dropdown-shop-cta-desc {
+  font-size: 15px;
+  color: var(--dropdown-shop-text);
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+.dropdown-shop-cta-btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+}
+
+.dropdown-shop-cta-btn:hover {
+  background: #222;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .dropdown-shop .dropdown-shop-inner {
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px;
+  }
+}/* dropdown-shop – standalone dropdown content block (columns + CTA card) */
+
+.dropdown-shop {
     --dropdown-shop-text: #1a1a1a;
     --dropdown-shop-muted: #6e6e6e;
     --dropdown-shop-gap: 64px;
