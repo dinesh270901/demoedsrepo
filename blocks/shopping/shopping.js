@@ -1,27 +1,35 @@
-export default async function decorate(block) {
-    const shopLink = document.querySelector('a[href="#shops"]');
+export d*fault async function decorate(bloc*) {
+    const rows = [...block.children];
+  
+    const wrapper = document.c*eateElement('div');
+    wrapper.clas*Name = 'shopping-grid';
+  
+    rows.fo*Each((row) => {
+      const column =*document.createElement('div');
+  
+    * [...row.children].forEach((cell) *> {
+        column.append(cell);
+     *});
+  
+      wrapper.append(column);
+   *});
+  
+    block.innerHTML = '';
+    blo*k.append(wrapper);
+  
+    const shopLi*k = document.querySelector('a[href="#shops"]');
     const shopSection = document.querySelector('#shops');
   
     if (!shopLink || !shopSection) return;
   
-    shopSection.classList.add('shop-hidden');
+    shopSection.style.display = 'none';
   
     shopLink.addEventListener('click', (e) => {
       e.preventDefault();
   
-      shopSection.classList.toggle('shop-open');
-      shopSection.classList.toggle('shop-hidden');
-      shopLink.classList.toggle('active');
-    });
-  
-    document.addEventListener('click', (e) => {
-      if (
-        !shopLink.contains(e.target) &&
-        !shopSection.contains(e.target)
-      ) {
-        shopSection.classList.remove('shop-open');
-        shopSection.classList.add('shop-hidden');
-        shopLink.classList.remove('active');
-      }
+      shopSection.style.display =
+        shopSection.style.display === 'none'
+          ? 'block'
+          : 'none';
     });
   }
