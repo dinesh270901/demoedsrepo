@@ -2,36 +2,37 @@ export default function decorate(block) {
   block.classList.add('accordion-block');
 
   const wrapper = document.createElement('div');
-  wrapper.className = 'accordion';
+  wrapper.className = 'accordion-v1';
 
   const allTriggers = [];
   const allPanels = [];
 
   [...block.children].forEach((row, idx) => {
     const item = document.createElement('div');
-    item.className = 'accordion-item';
+    item.className = 'accordion-v1-item';
 
     const headingEl = row.querySelector(':scope > *:first-child');
     const panelEl = document.createElement('div');
-    panelEl.className = 'accordion-panel';
+    panelEl.className = 'accordion-v1-panel';
     panelEl.setAttribute('role', 'region');
 
     const inner = document.createElement('div');
-    inner.className = 'accordion-panel-inner';
+    inner.className = 'accordion-v1-panel-inner';
 
     let titleHTML = `Item ${idx + 1}`;
     if (headingEl) titleHTML = headingEl.innerHTML;
 
     const trigger = document.createElement('button');
     trigger.type = 'button';
-    trigger.className = 'accordion-trigger';
+    trigger.className = 'accordion-v1-trigger';
     trigger.setAttribute('aria-expanded', 'false');
-    const id = `accordion-${Math.random().toString(36).slice(2, 9)}`;
+
+    const id = `accordion-v1-${Math.random().toString(36).slice(2, 9)}`;
     trigger.setAttribute('aria-controls', `${id}-panel`);
     panelEl.id = `${id}-panel`;
 
     const titleSpan = document.createElement('span');
-    titleSpan.className = 'accordion-trigger-text';
+    titleSpan.className = 'accordion-v1-trigger-text';
     titleSpan.innerHTML = titleHTML;
     trigger.appendChild(titleSpan);
 

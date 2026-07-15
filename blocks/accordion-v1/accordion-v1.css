@@ -1,11 +1,11 @@
-.accordion-block .accordion {
+.accordion-block .accordion-v1 {
   display: block;
   border-top: 1px solid #d9d9d9;
 }
-.accordion-block .accordion-item {
+.accordion-block .accordion-v1-item {
   border-bottom: 1px solid #d9d9d9;
 }
-.accordion-block .accordion-trigger {
+.accordion-block .accordion-v1-trigger {
   display: flex;
   align-items: center;
   gap: 18px;
@@ -20,14 +20,14 @@
   color: #1a1a1a;
   font-family: inherit;
 }
-.accordion-block .accordion-trigger-text {
+.accordion-block .accordion-v1-trigger-text {
   cursor: pointer;
 }
-.accordion-block .accordion-trigger:focus-visible {
+.accordion-block .accordion-v1-trigger:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
-.accordion-block .accordion-trigger::before {
+.accordion-block .accordion-v1-trigger::before {
   content: "";
   display: inline-block;
   flex: 0 0 auto;
@@ -38,29 +38,29 @@
   transform: rotate(-45deg);
   transition: transform 0.3s ease;
 }
-.accordion-block .accordion-trigger[aria-expanded=true]::before {
+.accordion-block .accordion-v1-trigger[aria-expanded=true]::before {
   transform: rotate(45deg);
 }
-.accordion-block .accordion-panel {
+.accordion-block .accordion-v1-panel {
   overflow: hidden;
   transition: max-height 0.28s ease;
 }
-.accordion-block .accordion-panel[hidden] {
+.accordion-block .accordion-v1-panel[hidden] {
   display: block;
 }
-.accordion-block .accordion-panel-inner {
+.accordion-block .accordion-v1-panel-inner {
   padding: 0 24px 24px calc(0.5em + 18px + 24px);
   color: #333;
   font-size: 24px;
   line-height: 1.6;
 }
 @media (min-width: 700px) {
-  .accordion-block .accordion-trigger {
+  .accordion-block .accordion-v1-trigger {
     padding: 26px 4px 26px 28px;
     gap: 20px;
     font-size: 24px;
   }
-  .accordion-block .accordion-panel-inner {
+  .accordion-block .accordion-v1-panel-inner {
     padding-left: calc(0.5em + 20px + 28px);
   }
-}/*# sourceMappingURL=accordion.css.map */
+}/*# sourceMappingURL=accordion-v1.css.map */

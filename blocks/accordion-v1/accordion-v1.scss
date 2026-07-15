@@ -27,16 +27,16 @@ $bp-desktop: 700px;
 // Accordion Block
 // ==========================
 .accordion-block {
-  .accordion {
+  .accordion-v1 {
     display: block;
     border-top: 1px solid $color-border;
   }
 
-  .accordion-item {
+  .accordion-v1-item {
     border-bottom: 1px solid $color-border;
   }
 
-  .accordion-trigger {
+  .accordion-v1-trigger {
     display: flex;
     align-items: center;
     gap: $trigger-gap-mobile;
@@ -77,7 +77,7 @@ $bp-desktop: 700px;
     }
   }
 
-  .accordion-panel {
+  .accordion-v1-panel {
     overflow: hidden;
     transition: $panel-transition;
 
@@ -94,13 +94,13 @@ $bp-desktop: 700px;
   }
 
   @media (min-width: $bp-desktop) {
-    .accordion-trigger {
+    .accordion-v1-trigger {
       padding: $trigger-padding-desktop;
       gap: $trigger-gap-desktop;
       font-size: $font-size-trigger;
     }
 
-    .accordion-panel-inner {
+    .accordion-v1-panel-inner {
       padding-left: calc(#{$chevron-size} + #{$trigger-gap-desktop} + 28px);
     }
   }
