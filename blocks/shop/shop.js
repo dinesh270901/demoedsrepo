@@ -134,10 +134,32 @@ function forceStyle(el, props) {
         titleEl.replaceWith(heading);
       }
   
-      const list = cell.querySelector('ul, ol');
+      // Detect promo columns by the presence of bold text (the big
+      // headline), rather than assuming a real <ul> exists — some docs
+      // author each link as its own paragraph instead of a bullet list.
+      const isPromo = !!cell.querySelector('strong, b');
   
-      if (list) {
+      if (!isPromo) {
         row.classList.add('shop-column-links');
+  
+        // Normalize into a real <ul> for consistent styling, whether
+        // the source used an actual bullet list or plain <p><a></p> lines.
+        let list = cell.querySelector('ul, ol');
+        if (!list) {
+          list = document.createElement('ul');
+          cell.querySelectorAll('a').forEach((a) => {
+            const parent = a.parentElement;
+            const li = document.createElement('li');
+            li.append(a);
+            list.append(li);
+            // Clean up the now-empty paragraph the link used to live in.
+            if (parent && parent !== cell && !parent.textContent.trim() && !parent.children.length) {
+              parent.remove();
+            }
+          });
+          cell.append(list);
+        }
+  
         list.classList.add('shop-links');
         list.querySelectorAll('a').forEach((a) => {
           forceStyle(a, {
@@ -164,11 +186,11 @@ function forceStyle(el, props) {
           });
         });
   
-        cell.querySelectorAll('strong').forEach((strong) => {
+        cell.querySelectorAll('strong, b').forEach((strong) => {
           const h3 = document.createElement('h3');
           h3.className = 'shop-promo-heading';
           h3.innerHTML = strong.innerHTML;
-          strong.closest('p')?.replaceWith(h3);
+          strong.closest('p')?.replaceWith(h3) || strong.replaceWith(h3);
           forceStyle(h3, {
             'font-size': '32px',
             'font-weight': '800',
