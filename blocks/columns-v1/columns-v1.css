@@ -1,8 +1,8 @@
-.columns,
-.columns * {
+.columns-v1,
+.columns-v1 * {
   box-sizing: border-box;
 }
-.columns > div {
+.columns-v1 > div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -11,19 +11,19 @@
   margin: 0 auto;
   padding: 20px 24px 60px;
 }
-.columns > div > div {
+.columns-v1 > div > div {
   flex: 1 1 300px;
   display: flex;
   flex-direction: column;
 }
 @media (max-width: 768px) {
-  .columns > div {
+  .columns-v1 > div {
     flex-direction: column;
     gap: 32px;
   }
 }
-.columns picture,
-.columns img {
+.columns-v1 picture,
+.columns-v1 img {
   width: 100%;
   height: 220px;
   -o-object-fit: cover;
@@ -31,20 +31,20 @@
   display: block;
   margin-bottom: 20px;
 }
-.columns h3,
-.columns strong {
+.columns-v1 h3,
+.columns-v1 strong {
   font-size: 24px;
   font-weight: 700;
   color: #1a1a1a;
   margin: 0 0 12px;
 }
-.columns p {
+.columns-v1 p {
   font-size: 24px;
   line-height: 1.5;
   color: #333;
   margin: 0 0 16px;
 }
-.columns a {
+.columns-v1 a {
   color: #b3261e;
   font-weight: 700;
   font-size: 24px;
@@ -53,11 +53,11 @@
   text-decoration: none;
   margin-top: auto;
 }
-.columns a:hover {
+.columns-v1 a:hover {
   text-decoration: underline;
 }
 
-.columns-cta a {
+.columns-v1-cta a {
   color: #b3261e;
   font-weight: 700;
   font-size: 24px;
@@ -79,4 +79,4 @@
   font-size: 30px;
   font-weight: 700;
   color: #1a1a1a;
-}/*# sourceMappingURL=columns.css.map */
+}/*# sourceMappingURL=columns-v1.css.map */
