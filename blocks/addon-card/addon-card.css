@@ -1,0 +1,224 @@
+.addon-card > div {
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 1fr;
+    gap: 48px;
+    align-items: center;
+   
+    background: #fff;
+    padding: 36px 40px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+  }
+   
+  /* -----------------------
+     Columns
+  ----------------------- */
+   
+  .left-content,
+  .middle-content,
+  .right-content {
+    display: flex;
+    flex-direction: column;
+  }
+   
+  .middle-content {
+    justify-content: center;
+  }
+   
+  .right-content {
+    justify-content: center;
+  }
+   
+  /* -----------------------
+     OPTIONAL ADD-ON Tag
+  ----------------------- */
+   
+  .left-content .tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+   
+    width: fit-content;
+   
+    margin: 0 0 24px;
+   
+    padding: 8px 18px;
+   
+    background: #dbe7ff;
+   
+    border-radius: 999px;
+   
+    font-family: TcomLight, HelvNeueLight, "Helvetica Neue Light", Arial, sans-serif;
+   
+    font-size: 13px;
+   
+    font-weight: 400;
+   
+    letter-spacing: .4px;
+   
+    text-transform: uppercase;
+  }
+   
+  /* -----------------------
+     Title
+  ----------------------- */
+   
+  .left-content h1,
+  .left-content h2,
+  .left-content h3,
+  .left-content h4 {
+    margin: 0;
+   
+    color: #000;
+   
+    font-size: 48px;
+   
+    font-weight: 700;
+   
+    line-height: 1.1;
+  }
+   
+  /* -----------------------
+     Description
+  ----------------------- */
+   
+  .middle-content p {
+    margin: 0;
+   
+    color: #000;
+   
+    font-family: TcomLight, HelvNeueLight, "Helvetica Neue Light", Arial, sans-serif;
+   
+    font-size: 20px;
+   
+    line-height: 1.6;
+  }
+   
+   
+  /* -----------------------
+     Price
+  ----------------------- */
+   
+  .right-content .price {
+    margin: 0 0 20px;
+   
+    color: #000;
+   
+    font-family: TcomLight, HelvNeueLight, "Helvetica Neue Light", Arial, sans-serif;
+   
+    font-size: 22px;
+   
+    line-height: 1.2;
+  }
+   
+  /* $25 */
+   
+  .right-content .price span {
+    font-size: 54px;
+   
+    font-weight: 700;
+   
+    font-family: Arial, sans-serif;
+   
+    color: #000;
+  }
+   
+  /* -----------------------
+     Link
+  ----------------------- */
+   
+  .right-content .addon-link {
+    width: fit-content;
+   
+    color: #000;
+   
+    font-size: 18px;
+   
+    font-weight: 700;
+   
+    text-decoration: underline;
+   
+    text-underline-offset: 3px;
+  }
+   
+  .right-content .addon-link:hover {
+    color: #000;
+  }
+   
+  /* -----------------------
+     Responsive
+  ----------------------- */
+   
+  @media (max-width: 991px) {
+   
+    .addon-card {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding: 24px;
+    }
+   
+    .left-content h1,
+    .left-content h2,
+    .left-content h3,
+    .left-content h4 {
+      font-size: 34px;
+    }
+   
+    .middle-content p {
+      font-size: 18px;
+    }
+   
+    .right-content .price span {
+      font-size: 40px;
+    }
+   
+    .right-content .addon-link {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 768px) {
+   
+    .addon-card > div {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px;
+    }
+   
+    .left-content,
+    .middle-content,
+    .right-content {
+      width: 100%;
+    }
+   
+    .left-content {
+      align-items: flex-start;
+    }
+   
+    .middle-content {
+      align-items: flex-start;
+    }
+   
+    .right-content {
+      align-items: flex-start;
+    }
+   
+    .left-content h1,
+    .left-content h2,
+    .left-content h3,
+    .left-content h4 {
+      font-size: 34px;
+    }
+   
+    .middle-content p {
+      font-size: 18px;
+    }
+   
+    .right-content .price span {
+      font-size: 42px;
+    }
+   
+    .right-content .addon-link {
+      font-size: 16px;
+    }
+  }
