@@ -1,15 +1,15 @@
-.cards {
+.card-v1 {
   background: #ffffff;
   padding: 40px 0;
   position: relative;
   overflow: visible;
 }
 @media (max-width: 768px) {
-  .cards {
+  .card-v1 {
     padding: 24px 0;
   }
 }
-.cards-inner {
+.card-v1-inner {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
@@ -21,18 +21,18 @@
   z-index: 1;
 }
 @media (max-width: 1024px) {
-  .cards-inner {
+  .card-v1-inner {
     gap: 32px;
   }
 }
 @media (max-width: 768px) {
-  .cards-inner {
+  .card-v1-inner {
     flex-direction: column;
     gap: 0;
     padding: 0 16px;
   }
 }
-.cards-media {
+.card-v1-media {
   flex: 1;
   aspect-ratio: 16/10;
   overflow: hidden;
@@ -40,23 +40,24 @@
   z-index: 1;
 }
 @media (max-width: 768px) {
-  .cards-media {
+  .card-v1-media {
     width: 100%;
     aspect-ratio: 16/9;
   }
 }
-.cards-media picture {
+.card-v1-media picture {
   display: block;
   width: 100%;
   height: 100%;
 }
-.cards-media img {
+.card-v1-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   display: block;
 }
-.cards-text {
+.card-v1-text {
   flex: 0 0 38%;
   max-width: 38%;
   display: flex;
@@ -65,19 +66,19 @@
   z-index: 1;
 }
 @media (max-width: 1024px) {
-  .cards-text {
+  .card-v1-text {
     flex: 0 0 42%;
     max-width: 42%;
   }
 }
 @media (max-width: 768px) {
-  .cards-text {
+  .card-v1-text {
     flex: 1 1 100%;
     max-width: 100%;
     padding-top: 20px;
   }
 }
-.cards-heading {
+.card-v1-heading {
   margin: 0 0 16px;
   font-size: 32px;
   font-weight: 800;
@@ -85,25 +86,25 @@
   line-height: 1.15;
 }
 @media (max-width: 1024px) {
-  .cards-heading {
+  .card-v1-heading {
     font-size: 28px;
   }
 }
 @media (max-width: 768px) {
-  .cards-heading {
+  .card-v1-heading {
     font-size: 24px;
   }
 }
 @media (max-width: 480px) {
-  .cards-heading {
+  .card-v1-heading {
     font-size: 20px;
   }
 }
-.cards-divider-mobile {
+.card-v1-divider-mobile {
   display: none;
 }
 @media (max-width: 768px) {
-  .cards-divider-mobile {
+  .card-v1-divider-mobile {
     display: block;
     width: 100%;
     height: 1px;
@@ -111,7 +112,7 @@
     margin: 0 0 20px;
   }
 }
-.cards-divider {
+.card-v1-divider {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -122,29 +123,29 @@
   z-index: 0;
 }
 @media (max-width: 768px) {
-  .cards-divider {
+  .card-v1-divider {
     display: none;
   }
 }
-.cards-description {
+.card-v1-description {
   margin: 20px 0 0;
   font-size: 24px;
   line-height: 1.65;
   color: #1a1a1a;
 }
 @media (max-width: 1024px) {
-  .cards-description {
+  .card-v1-description {
     font-size: 16px;
   }
 }
 @media (max-width: 768px) {
-  .cards-description {
+  .card-v1-description {
     font-size: 15px;
   }
 }
 @media (max-width: 480px) {
-  .cards-description {
+  .card-v1-description {
     font-size: 14px;
     line-height: 1.55;
   }
-}
+}/*# sourceMappingURL=card-v1.css.map */
