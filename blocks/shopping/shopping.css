@@ -1,51 +1,130 @@
-/* Hidden initially */
+/* Hidden by default
 #shops {
     display: none;
-    background: #f5f5f5;
-    border-top: 1px solid #ddd;
     width: 100%;
+    background: #f5f5f5;
+    border-top: 1px solid #d9d9d9;
     padding: 60px 0;
+    box-sizing: border-box;
   }
   
-  /* Show on click */
+  /* Show when Shop clicked */
   #shops.shop-open {
     display: block;
   }
   
-  /* Container */
-  .shopping-wrapper {
+  /* Main container */
+  .shopping.block {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 48px;
   }
   
-  /* Toyota style grid */
+  /* 4-column grid */
   .shopping.block > div {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 72px;
+    align-items: start;
   }
   
+  /* Column */
+  .shopping.block > div > div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Remove bullets */
   .shopping.block ul {
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
   }
   
   .shopping.block li {
     margin-bottom: 24px;
   }
   
+  /* Section headings */
+  .shopping.block h2,
+  .shopping.block h3,
+  .shopping.block p:first-child {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 32px;
+  }
+  
+  /* Links */
   .shopping.block a {
     color: #000;
     text-decoration: none;
     font-size: 18px;
+    line-height: 1.6;
   }
   
   .shopping.block a:hover {
     text-decoration: underline;
   }
   
-  .active {
-    border-bottom: 3px solid #eb0a1e;
+  /* CTA column */
+  .shopping.block > div > div:last-child h2,
+  .shopping.block > div > div:last-child h3 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: normal;
+    text-transform: none;
+    margin-bottom: 24px;
   }
+  
+  /* CTA text */
+  .shopping.block > div > div:last-child p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-bottom: 32px;
+  }
+  
+  /* CTA button */
+  .shopping.block .button-container {
+    margin-top: 24px;
+  }
+  
+  .shopping.block .button,
+  .shopping.block .button-container a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 34px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  
+  /* Shop active state */
+  a[href="#shops"].active {
+    border-bottom: 3px solid #eb0a1e;
+    padding-bottom: 8px;
+  }
+  
+  /* Mobile */
+  @media (max-width: 768px) {
+    #shops {
+      padding: 32px 0;
+    }
+  
+    .shopping.block {
+      padding: 0 24px;
+    }
+  
+    .shopping.block > div {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  } 
