@@ -4,11 +4,13 @@
   position: relative;
   overflow: visible;
 }
+
 @media (max-width: 768px) {
   .card-v1 {
     padding: 24px 0;
   }
 }
+
 .card-v1-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -20,11 +22,13 @@
   position: relative;
   z-index: 1;
 }
+
 @media (max-width: 1024px) {
   .card-v1-inner {
     gap: 32px;
   }
 }
+
 @media (max-width: 768px) {
   .card-v1-inner {
     flex-direction: column;
@@ -32,31 +36,35 @@
     padding: 0 16px;
   }
 }
+
 .card-v1-media {
   flex: 1;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
+
 @media (max-width: 768px) {
   .card-v1-media {
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
   }
 }
+
 .card-v1-media picture {
   display: block;
   width: 100%;
   height: 100%;
 }
+
 .card-v1-media img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   display: block;
 }
+
 .card-v1-text {
   flex: 0 0 38%;
   max-width: 38%;
@@ -65,12 +73,14 @@
   position: relative;
   z-index: 1;
 }
+
 @media (max-width: 1024px) {
   .card-v1-text {
     flex: 0 0 42%;
     max-width: 42%;
   }
 }
+
 @media (max-width: 768px) {
   .card-v1-text {
     flex: 1 1 100%;
@@ -78,6 +88,7 @@
     padding-top: 20px;
   }
 }
+
 .card-v1-heading {
   margin: 0 0 16px;
   font-size: 32px;
@@ -85,24 +96,29 @@
   color: #1a1a1a;
   line-height: 1.15;
 }
+
 @media (max-width: 1024px) {
   .card-v1-heading {
     font-size: 28px;
   }
 }
+
 @media (max-width: 768px) {
   .card-v1-heading {
     font-size: 24px;
   }
 }
+
 @media (max-width: 480px) {
   .card-v1-heading {
     font-size: 20px;
   }
 }
+
 .card-v1-divider-mobile {
   display: none;
 }
+
 @media (max-width: 768px) {
   .card-v1-divider-mobile {
     display: block;
@@ -112,6 +128,7 @@
     margin: 0 0 20px;
   }
 }
+
 .card-v1-divider {
   position: absolute;
   left: 50%;
@@ -122,30 +139,35 @@
   pointer-events: none;
   z-index: 0;
 }
+
 @media (max-width: 768px) {
   .card-v1-divider {
     display: none;
   }
 }
+
 .card-v1-description {
   margin: 20px 0 0;
   font-size: 24px;
   line-height: 1.65;
   color: #1a1a1a;
 }
+
 @media (max-width: 1024px) {
   .card-v1-description {
     font-size: 16px;
   }
 }
+
 @media (max-width: 768px) {
   .card-v1-description {
     font-size: 15px;
   }
 }
+
 @media (max-width: 480px) {
   .card-v1-description {
     font-size: 14px;
     line-height: 1.55;
   }
-}/*# sourceMappingURL=card-v1.css.map */
+}
