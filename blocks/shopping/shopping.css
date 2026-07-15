@@ -1,79 +1,130 @@
 /* Hidden by default */
-.shop-hidden {
+#shops {
     display: none;
-  }
-  
-  /* Dropdown section */
-  #shops {
     width: 100%;
     background: #f5f5f5;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #d9d9d9;
+    padding: 60px 0;
     box-sizing: border-box;
   }
   
-  /* Open state */
+  /* Show when Shop clicked */
   #shops.shop-open {
     display: block;
   }
   
-  /* Remove extra section margins */
-  #shops.section {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Content wrapper */
-  #shops .default-content-wrapper,
-  #shops > div {
+  /* Main container */
+  .shopping.block {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 48px 40px;
+    padding: 0 48px;
   }
   
-  /* Active Shop menu */
-  a[href="#shops"].active {
-    border-bottom: 3px solid #eb0a1e;
-  }
-  
-  /* Toyota-style layout */
-  #shops table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  #shops tbody {
+  /* 4-column grid */
+  .shopping.block > div {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 48px;
+    gap: 72px;
+    align-items: start;
   }
   
-  #shops tr {
-    display: contents;
+  /* Column */
+  .shopping.block > div > div {
+    display: flex;
+    flex-direction: column;
   }
   
-  #shops td {
-    border: none;
+  /* Remove bullets */
+  .shopping.block ul {
+    list-style: none;
     padding: 0;
-    vertical-align: top;
+    margin: 0;
   }
   
-  #shops a {
-    text-decoration: none;
+  .shopping.block li {
+    margin-bottom: 24px;
+  }
+  
+  /* Section headings */
+  .shopping.block h2,
+  .shopping.block h3,
+  .shopping.block p:first-child {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 32px;
+  }
+  
+  /* Links */
+  .shopping.block a {
     color: #000;
-    line-height: 2;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1.6;
   }
   
-  #shops a:hover {
+  .shopping.block a:hover {
     text-decoration: underline;
   }
   
+  /* CTA column */
+  .shopping.block > div > div:last-child h2,
+  .shopping.block > div > div:last-child h3 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: normal;
+    text-transform: none;
+    margin-bottom: 24px;
+  }
+  
+  /* CTA text */
+  .shopping.block > div > div:last-child p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-bottom: 32px;
+  }
+  
+  /* CTA button */
+  .shopping.block .button-container {
+    margin-top: 24px;
+  }
+  
+  .shopping.block .button,
+  .shopping.block .button-container a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 34px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  
+  /* Shop active state */
+  a[href="#shops"].active {
+    border-bottom: 3px solid #eb0a1e;
+    padding-bottom: 8px;
+  }
+  
+  /* Mobile */
   @media (max-width: 768px) {
-    #shops tbody {
-      display: block;
+    #shops {
+      padding: 32px 0;
     }
   
-    #shops tr {
-      display: block;
-      margin-bottom: 24px;
+    .shopping.block {
+      padding: 0 24px;
+    }
+  
+    .shopping.block > div {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
   }
