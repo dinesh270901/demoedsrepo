@@ -9,7 +9,13 @@
  * header is, and moves naturally with it (including sticky headers).
  */
 
-function findShopNavLink(block) {
+function forceStyle(el, props) {
+    Object.entries(props).forEach(([prop, value]) => {
+      el.style.setProperty(prop, value, 'important');
+    });
+  }
+  
+  function findShopNavLink(block) {
     const candidates = document.querySelectorAll('header a, nav a');
     return [...candidates].find(
       (a) => a.textContent.trim().toLowerCase() === 'shop' && !block.contains(a),
@@ -39,12 +45,23 @@ function findShopNavLink(block) {
     const originalWrapper = block.parentElement;
     header.append(block);
   
-    // Avoid leaving a blank gap where the block used to live.
-    if (originalWrapper && !originalWrapper.children.length) {
+    // Only clean up if the block had its own dedicated wrapper that's
+    // now completely empty. NEVER hide a wrapper that still has other
+    // content in it (e.g. it may be shared with the nav itself).
+    if (originalWrapper && originalWrapper !== header && !originalWrapper.children.length) {
       originalWrapper.remove();
-    } else if (originalWrapper && originalWrapper !== header) {
-      originalWrapper.style.display = 'none';
     }
+  
+    // Belt-and-braces: guarantee the panel positions correctly even if
+    // some global stylesheet has a competing rule for position/display.
+    forceStyle(block, {
+      position: 'absolute',
+      top: '100%',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '100vw',
+      'z-index': '200',
+    });
   
     return header;
   }
@@ -122,6 +139,13 @@ function findShopNavLink(block) {
       if (list) {
         row.classList.add('shop-column-links');
         list.classList.add('shop-links');
+        list.querySelectorAll('a').forEach((a) => {
+          forceStyle(a, {
+            color: '#1a1a1a',
+            'font-weight': '600',
+            'text-decoration': 'none',
+          });
+        });
       } else {
         row.classList.add('shop-column-promo');
   
@@ -133,6 +157,11 @@ function findShopNavLink(block) {
             a.replaceWith(wrapper);
             wrapper.append(a);
           }
+          forceStyle(a, {
+            background: '#000',
+            color: '#fff',
+            'text-decoration': 'none',
+          });
         });
   
         cell.querySelectorAll('strong').forEach((strong) => {
@@ -140,6 +169,11 @@ function findShopNavLink(block) {
           h3.className = 'shop-promo-heading';
           h3.innerHTML = strong.innerHTML;
           strong.closest('p')?.replaceWith(h3);
+          forceStyle(h3, {
+            'font-size': '32px',
+            'font-weight': '800',
+            color: '#1a1a1a',
+          });
         });
       }
     });
