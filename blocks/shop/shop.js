@@ -96,7 +96,14 @@ function findShopNavLink(block) {
   export default function decorate(block) {
     block.classList.add('shop-dropdown');
   
-    [...block.children].forEach((row) => {
+    // Wrap the columns so the outer block can be a full-bleed panel
+    // while the inner grid stays centered/padded like the rest of the site.
+    const content = document.createElement('div');
+    content.className = 'shop-content';
+    content.append(...block.children);
+    block.append(content);
+  
+    [...content.children].forEach((row) => {
       row.classList.add('shop-column');
   
       const cell = row.firstElementChild;

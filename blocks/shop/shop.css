@@ -14,7 +14,14 @@
     z-index: 200;
     background: #fff;
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.14);
+  }
   
+  .shop.block.shop-open {
+    display: block;
+  }
+  
+  .shop.block .shop-content {
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 64px;
     row-gap: 40px;
@@ -113,13 +120,13 @@
   
   /* Responsive */
   @media (max-width: 900px) {
-    .shop.block {
+    .shop.block .shop-content {
       grid-template-columns: 1fr 1fr;
     }
   }
   
   @media (max-width: 600px) {
-    .shop.block {
+    .shop.block .shop-content {
       grid-template-columns: 1fr;
       padding: 32px 16px;
     }
