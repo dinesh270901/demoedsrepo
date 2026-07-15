@@ -1,15 +1,15 @@
-.card-v1 {
+.cards {
   background: #ffffff;
   padding: 40px 0;
   position: relative;
   overflow: visible;
 }
 @media (max-width: 768px) {
-  .card-v1 {
+  .cards {
     padding: 24px 0;
   }
 }
-.card-v1-inner {
+.cards-inner {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
@@ -21,18 +21,18 @@
   z-index: 1;
 }
 @media (max-width: 1024px) {
-  .card-v1-inner {
+  .cards-inner {
     gap: 32px;
   }
 }
 @media (max-width: 768px) {
-  .card-v1-inner {
+  .cards-inner {
     flex-direction: column;
     gap: 0;
     padding: 0 16px;
   }
 }
-.card-v1-media {
+.cards-media {
   flex: 1;
   aspect-ratio: 16/10;
   overflow: hidden;
@@ -40,24 +40,23 @@
   z-index: 1;
 }
 @media (max-width: 768px) {
-  .card-v1-media {
+  .cards-media {
     width: 100%;
     aspect-ratio: 16/9;
   }
 }
-.card-v1-media picture {
+.cards-media picture {
   display: block;
   width: 100%;
   height: 100%;
 }
-.card-v1-media img {
+.cards-media img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   display: block;
 }
-.card-v1-text {
+.cards-text {
   flex: 0 0 38%;
   max-width: 38%;
   display: flex;
@@ -66,19 +65,19 @@
   z-index: 1;
 }
 @media (max-width: 1024px) {
-  .card-v1-text {
+  .cards-text {
     flex: 0 0 42%;
     max-width: 42%;
   }
 }
 @media (max-width: 768px) {
-  .card-v1-text {
+  .cards-text {
     flex: 1 1 100%;
     max-width: 100%;
     padding-top: 20px;
   }
 }
-.card-v1-heading {
+.cards-heading {
   margin: 0 0 16px;
   font-size: 32px;
   font-weight: 800;
@@ -86,25 +85,25 @@
   line-height: 1.15;
 }
 @media (max-width: 1024px) {
-  .card-v1-heading {
+  .cards-heading {
     font-size: 28px;
   }
 }
 @media (max-width: 768px) {
-  .card-v1-heading {
+  .cards-heading {
     font-size: 24px;
   }
 }
 @media (max-width: 480px) {
-  .card-v1-heading {
+  .cards-heading {
     font-size: 20px;
   }
 }
-.card-v1-divider-mobile {
+.cards-divider-mobile {
   display: none;
 }
 @media (max-width: 768px) {
-  .card-v1-divider-mobile {
+  .cards-divider-mobile {
     display: block;
     width: 100%;
     height: 1px;
@@ -112,7 +111,7 @@
     margin: 0 0 20px;
   }
 }
-.card-v1-divider {
+.cards-divider {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -123,29 +122,29 @@
   z-index: 0;
 }
 @media (max-width: 768px) {
-  .card-v1-divider {
+  .cards-divider {
     display: none;
   }
 }
-.card-v1-description {
+.cards-description {
   margin: 20px 0 0;
   font-size: 24px;
   line-height: 1.65;
   color: #1a1a1a;
 }
 @media (max-width: 1024px) {
-  .card-v1-description {
+  .cards-description {
     font-size: 16px;
   }
 }
 @media (max-width: 768px) {
-  .card-v1-description {
+  .cards-description {
     font-size: 15px;
   }
 }
 @media (max-width: 480px) {
-  .card-v1-description {
+  .cards-description {
     font-size: 14px;
     line-height: 1.55;
   }
-}/*# sourceMappingURL=card-v1.css.map */
+}
