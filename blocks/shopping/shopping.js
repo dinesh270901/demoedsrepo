@@ -1,27 +1,30 @@
 export default async function decorate(block) {
-    const shopLink = document.querySelector('a[href="#shops"]');
-    const shopSection = document.querySelector('#shops');
+    const shopSection = document.getElementById('shops');
   
-    if (!shopLink || !shopSection) {
+    if (!shopSection) return;
+  
+    shopSection.classList.remove('shop-open');
+  
+    const shopLink = [...document.querySelectorAll('a')]
+      .find((link) => link.textContent.trim() === 'Shop');
+  
+    if (!shopLink) {
+      console.log('Shop link not found');
       return;
     }
   
-    // Hide initially
-    shopSection.classList.remove('shop-open');
-  
-    // Open / Close dropdown
     shopLink.addEventListener('click', (e) => {
       e.preventDefault();
+  
       shopSection.classList.toggle('shop-open');
       shopLink.classList.toggle('active');
     });
   
-    // Close when clicking outside
     document.addEventListener('click', (e) => {
-      const clickInsideDropdown = shopSection.contains(e.target);
-      const clickOnShop = shopLink.contains(e.target);
-  
-      if (!clickInsideDropdown && !clickOnShop) {
+      if (
+        !shopSection.contains(e.target) &&
+        !shopLink.contains(e.target)
+      ) {
         shopSection.classList.remove('shop-open');
         shopLink.classList.remove('active');
       }
