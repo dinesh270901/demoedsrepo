@@ -1,0 +1,96 @@
+.shop.block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 48px;
+    row-gap: 32px;
+    padding: 40px 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  
+  /* Column title, e.g. "SHOPPING TOOLS" */
+  .shop.block .shop-column-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #767676;
+    margin: 0 0 20px;
+  }
+  
+  /* Links column */
+  .shop.block .shop-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  
+  .shop.block .shop-links a {
+    color: #1a1a1a;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.3;
+  }
+  
+  .shop.block .shop-links a:hover,
+  .shop.block .shop-links a:focus {
+    text-decoration: underline;
+  }
+  
+  /* Promo column ("Build Your Toyota" style card) */
+  .shop.block .shop-column-promo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .shop.block .shop-promo-heading {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 16px;
+    line-height: 1.15;
+  }
+  
+  .shop.block .shop-column-promo p:not(.shop-column-title):not(.button-container) {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0 0 24px;
+  }
+  
+  .shop.block .button-container {
+    margin: 0;
+  }
+  
+  .shop.block .button-container .button {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 1;
+  }
+  
+  .shop.block .button-container .button:hover {
+    background: #222;
+  }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .shop.block {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .shop.block {
+      grid-template-columns: 1fr;
+      padding: 24px 16px;
+    }
+  }
