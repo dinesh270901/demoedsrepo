@@ -1,10 +1,14 @@
-.cards {
+$color-bg: #ffffff;
+$color-divider: #d9d9d9;
+$bp-mobile: 767px;
+
+.card-v1 {
   background: $color-bg;
   padding: 40px 0;
   position: relative;
-  overflow-x: hidden; // prevents horizontal scrollbar
+  overflow-x: hidden;
 
-  @include respond($bp-mobile) {
+  @media (max-width: $bp-mobile) {
     padding: 24px 0;
   }
 
@@ -17,7 +21,7 @@
     pointer-events: none;
     z-index: 0;
 
-    @include respond($bp-mobile) {
+    @media (max-width: $bp-mobile) {
       display: none;
     }
   }

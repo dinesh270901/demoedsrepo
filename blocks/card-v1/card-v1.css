@@ -1,0 +1,25 @@
+.card-v1 {
+  background: #ffffff;
+  padding: 40px 0;
+  position: relative;
+  overflow-x: hidden;
+}
+@media (max-width: 767px) {
+  .card-v1 {
+    padding: 24px 0;
+  }
+}
+.card-v1-divider {
+  position: absolute;
+  left: 0;
+  width: 98%;
+  height: 1px;
+  background-color: #d9d9d9;
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 767px) {
+  .card-v1-divider {
+    display: none;
+  }
+}/*# sourceMappingURL=card-v1.css.map */
