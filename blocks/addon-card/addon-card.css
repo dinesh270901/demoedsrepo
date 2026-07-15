@@ -106,7 +106,7 @@
    
     font-family: TcomLight, HelvNeueLight, "Helvetica Neue Light", Arial, sans-serif;
    
-    font-size: 22px;
+    font-size: 16px;
    
     line-height: 1.2;
   }
@@ -114,7 +114,7 @@
   /* $25 */
    
   .right-content .price span {
-    font-size: 54px;
+    font-size: 24px;
    
     font-weight: 700;
    
@@ -161,11 +161,11 @@
     .left-content h2,
     .left-content h3,
     .left-content h4 {
-      font-size: 34px;
+      font-size: 32px;
     }
    
     .middle-content p {
-      font-size: 18px;
+      font-size: 16px;
     }
    
     .right-content .price span {
