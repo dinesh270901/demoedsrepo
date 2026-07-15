@@ -1,7 +1,12 @@
 /*
- * Shop block — renders as a mega-menu dropdown, opened by clicking
- * the "Shop" link in the site header nav, and closed on outside
- * click, Escape, or clicking "Shop" again.
+ * Shop block — renders as a mega-menu dropdown anchored to the
+ * header, opened by clicking the "Shop" link in the site nav.
+ *
+ * Approach: rather than calculating pixel offsets (fragile on
+ * scroll/resize), the block is reparented into the header itself
+ * and positioned with `position: absolute; top: 100%` relative to
+ * it — so it always sits flush below the nav, however tall the
+ * header is, and moves naturally with it (including sticky headers).
  */
 
 function findShopNavLink(block) {
@@ -11,24 +16,42 @@ function findShopNavLink(block) {
     );
   }
   
-  function positionDropdown(block) {
-    const header = document.querySelector('header') || document.querySelector('.header');
-    const bottom = header ? header.getBoundingClientRect().bottom : 0;
-    block.style.top = `${Math.max(bottom, 0)}px`;
-  }
-  
   function closeDropdown(block, trigger) {
     block.classList.remove('shop-open');
     trigger?.setAttribute('aria-expanded', 'false');
   }
   
   function openDropdown(block, trigger) {
-    positionDropdown(block);
     block.classList.add('shop-open');
     trigger?.setAttribute('aria-expanded', 'true');
   }
   
+  function moveIntoHeader(block, trigger) {
+    const header = trigger.closest('header') || document.querySelector('header');
+    if (!header) return null;
+  
+    // Header needs a positioning context for the dropdown's
+    // `position: absolute; top: 100%` to anchor correctly.
+    if (getComputedStyle(header).position === 'static') {
+      header.style.position = 'relative';
+    }
+  
+    const originalWrapper = block.parentElement;
+    header.append(block);
+  
+    // Avoid leaving a blank gap where the block used to live.
+    if (originalWrapper && !originalWrapper.children.length) {
+      originalWrapper.remove();
+    } else if (originalWrapper && originalWrapper !== header) {
+      originalWrapper.style.display = 'none';
+    }
+  
+    return header;
+  }
+  
   function wireDropdown(block, trigger) {
+    moveIntoHeader(block, trigger);
+  
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-haspopup', 'true');
   
@@ -55,11 +78,6 @@ function findShopNavLink(block) {
         closeDropdown(block, trigger);
         trigger.focus();
       }
-    });
-  
-    // Reposition if the header height changes (e.g. sticky/scroll states)
-    window.addEventListener('resize', () => {
-      if (block.classList.contains('shop-open')) positionDropdown(block);
     });
   }
   
