@@ -1,8 +1,8 @@
-.texttab,
-.texttab * {
+.tabs-v1,
+.tabs-v1 * {
   box-sizing: border-box;
 }
-.texttab {
+.tabs-v1 {
   display: flex;
   padding-left: 62px;
   flex-direction: row;
@@ -13,7 +13,7 @@
   z-index: 100;
   transition: box-shadow 0.2s ease;
 }
-.texttab.is-fixed {
+.tabs-v1.is-fixed {
   position: fixed;
   top: 0;
   left: 0;
@@ -23,10 +23,10 @@
   background: #cfe2f3;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
-.texttab > div {
+.tabs-v1 > div {
   flex: 0 0 auto;
 }
-.texttab > div > div {
+.tabs-v1 > div > div {
   padding: 18px 22px;
   cursor: pointer;
   -moz-user-select: none;
@@ -35,21 +35,21 @@
   -webkit-tap-highlight-color: transparent;
   transition: background-color 0.2s ease;
 }
-.texttab > div > div:hover {
+.tabs-v1 > div > div:hover {
   background: transparent;
 }
-.texttab > div > div:hover a {
+.tabs-v1 > div > div:hover a {
   color: #b3261e;
 }
-.texttab > div > div.active {
+.tabs-v1 > div > div.active {
   background: #ececec;
 }
-.texttab > div > div.active a {
+.tabs-v1 > div > div.active a {
   color: #b3261e;
   font-weight: 700;
 }
-.texttab a,
-.texttab p {
+.tabs-v1 a,
+.tabs-v1 p {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -59,43 +59,43 @@
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
 }
-.texttab {
+.tabs-v1 {
   /* ==========================
      MOBILE
      ========================== */
 }
 @media (max-width: 768px) {
-  .texttab {
+  .tabs-v1 {
     /* Keep sticky tab identical to normal mobile tab */
   }
-  .texttab.is-fixed {
+  .tabs-v1.is-fixed {
     background: #fff;
     box-shadow: none;
     border: none;
   }
-  .texttab.is-fixed > div > div {
+  .tabs-v1.is-fixed > div > div {
     background: transparent;
   }
-  .texttab.is-fixed > div > div.active {
+  .tabs-v1.is-fixed > div > div.active {
     background: #e6e6e6;
   }
-  .texttab.is-fixed > div > div.active a {
+  .tabs-v1.is-fixed > div > div.active a {
     color: #202124;
     font-weight: 700;
   }
-  .texttab.is-fixed a,
-  .texttab.is-fixed p {
+  .tabs-v1.is-fixed a,
+  .tabs-v1.is-fixed p {
     color: #202124;
   }
 }
 
-.texttab-wrapper {
+.tabs-v1-wrapper {
   overflow: visible !important;
 }
 
-.texttab-placeholder {
+.tabs-v1-placeholder {
   display: none;
 }
-.texttab-placeholder.is-active {
+.tabs-v1-placeholder.is-active {
   display: block;
-}/*# sourceMappingURL=texttab.css.map */
+}/*# sourceMappingURL=tabs-v1.css.map */
