@@ -270,35 +270,4 @@
     right: 16px;
     width: auto;
   }
-
-/* MOBILE TOGGLE */
-  .site-nav .nav-mobile-toggle {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 22px 0;
-  }
-  .site-nav .nav-mobile-toggle-icon {
-    width: 24px;
-    height: 2px;
-    background: var(--nav-text);
-    position: relative;
-  }
-  .site-nav .nav-mobile-toggle-icon::before,
-  .site-nav .nav-mobile-toggle-icon::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--nav-text);
-  }
-  .site-nav .nav-mobile-toggle-icon::before {
-    top: -8px;
-  }
-  .site-nav .nav-mobile-toggle-icon::after {
-    bottom: -8px;
-  }
-
 }/*# sourceMappingURL=site-nav.css.map */

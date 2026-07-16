@@ -324,16 +324,8 @@
 
   @media (max-width: 900px) {
     .nav-menu {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+      display: none;
     }
-  
-    .nav-wrapper {
-      flex-wrap: wrap;
-      height: auto;
-    }
-  }
 
     .nav-menu-panel-inner {
       grid-template-columns: 1fr;
