@@ -121,46 +121,75 @@ function buildAccountList(listEl) {
 /** Parse a dropdown/account content cell into columns + CTA (+ account list). */
 function parseDropdownContent(cell, { isAccount = false } = {}) {
   const wrapper = document.createElement('div');
-  wrapper.className = isAccount ? 'nav-account-panel-inner' : 'nav-menu-panel-inner';
+  wrapper.className = isAccount
+    ? 'nav-account-panel-inner'
+    : 'nav-menu-panel-inner';
 
   const children = [...cell.children];
+
+  const knownTitles = [
+    'Shopping Tools',
+    'Vehicle Inventory',
+    'Financial Tools',
+    'My Toyota',
+    'Learn About Your Toyota',
+    'Maintain Your Toyota',
+    'Build Your Toyota',
+    'Personalize Your Toyota Experience',
+  ];
+
   let pendingTitle = null;
   let pendingDesc = null;
 
   children.forEach((el) => {
+    const text = el.textContent.trim();
+
     if (el.tagName === 'UL' || el.tagName === 'OL') {
       if (isAccount) {
         wrapper.append(buildAccountList(el));
       } else {
         wrapper.append(buildColumn(pendingTitle, el));
       }
+
       pendingTitle = null;
       pendingDesc = null;
       return;
     }
 
-    const button = el.querySelector(':scope > a[class*="button"]');
-    if (button) {
-      wrapper.append(buildCta(pendingTitle, pendingDesc, button));
+    const buttonLink = el.querySelector('a');
+
+    if (
+      buttonLink &&
+      (
+        buttonLink.textContent.includes('Build Now')
+        || buttonLink.textContent.includes('Create Account')
+        || buttonLink.textContent.includes('Sign In')
+      )
+    ) {
+      wrapper.append(buildCta(
+        pendingTitle,
+        pendingDesc,
+        buttonLink,
+      ));
+
       pendingTitle = null;
       pendingDesc = null;
       return;
     }
 
-    const strong = el.querySelector(':scope > strong, :scope > b');
-    const text = el.textContent.trim();
-
-    if (strong && el.children.length === 1) {
+    if (knownTitles.includes(text)) {
       pendingTitle = text;
-      pendingDesc = null;
       return;
     }
 
-    if (text) pendingDesc = text;
+    if (text) {
+      pendingDesc = text;
+    }
   });
 
   return wrapper;
 }
+
 
 function closeAll(menu, accountItem) {
   [...menu.children, accountItem].filter(Boolean).forEach((li) => {

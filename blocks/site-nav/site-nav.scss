@@ -1,62 +1,10 @@
-// site-nav – primary site header / navigation (logo, mega menus, account flyout)
-
-// -----------------------------------------------------------------------
-// Variables
-// -----------------------------------------------------------------------
-$nav-height: 64px;
-$nav-red: #eb0a1e;
-$nav-red-hover: #c40819;
-$nav-text: #1a1a1a;
-$nav-muted: #6e6e6e;
-$nav-border: #e6e6e6;
-$nav-max-width: 1400px;
-
-$nav-brand-gap: 10px;
-$nav-brand-logo-height: 28px;
-$nav-brand-text-size: 22px;
-$nav-brand-text-weight: 800;
-$nav-brand-text-tracking: 0.02em;
-
-$nav-item-gap: 32px;
-$nav-item-font-size: 16px;
-$nav-item-padding-y: 22px;
-$nav-underline-height: 3px;
-$nav-underline-transition: 0.15s ease;
-$nav-item-icon-size: 22px;
-
-$nav-panel-shadow: 0 12px 24px rgb(0 0 0 / 8%);
-$nav-account-panel-width: 420px;
-
-$nav-col-min-width: 160px;
-$nav-col-title-size: 12px;
-$nav-col-link-size: 17px;
-$nav-col-gap: 64px;
-
-$nav-cta-min-width: 220px;
-$nav-cta-title-size: 26px;
-$nav-cta-desc-size: 15px;
-$nav-cta-btn-size: 15px;
-$nav-cta-btn-padding: 14px 28px;
-$nav-cta-btn-radius: 999px;
-$nav-cta-btn-bg: #000;
-$nav-cta-btn-bg-hover: #222;
-
-$nav-account-row-font-size: 16px;
-$nav-account-row-padding: 16px 4px;
-$nav-account-chevron-size: 10px;
-
-$nav-mobile-breakpoint: 900px;
-
-// -----------------------------------------------------------------------
-// Block
-// -----------------------------------------------------------------------
 .site-nav {
-  --nav-height: #{$nav-height};
-  --nav-red: #{$nav-red};
-  --nav-text: #{$nav-text};
-  --nav-muted: #{$nav-muted};
-  --nav-border: #{$nav-border};
-  --nav-max-width: #{$nav-max-width};
+  --nav-height: 64px;
+  --nav-red: #eb0a1e;
+  --nav-text: #1a1a1a;
+  --nav-muted: #6e6e6e;
+  --nav-border: #e6e6e6;
+  --nav-max-width: 1400px;
 
   position: sticky;
   top: 0;
@@ -75,33 +23,31 @@ $nav-mobile-breakpoint: 900px;
     position: relative;
   }
 
-  // --- Brand ---
   .nav-brand {
     display: flex;
     align-items: center;
-    gap: $nav-brand-gap;
+    gap: 10px;
     text-decoration: none;
     flex-shrink: 0;
 
     img {
-      height: $nav-brand-logo-height;
+      height: 28px;
       width: auto;
       display: block;
     }
-
-    &-text {
-      font-size: $nav-brand-text-size;
-      font-weight: $nav-brand-text-weight;
-      color: var(--nav-text);
-      letter-spacing: $nav-brand-text-tracking;
-    }
   }
 
-  // --- Top-level menu ---
+  .nav-brand-text {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--nav-text);
+    letter-spacing: 0.02em;
+  }
+
   .nav-menu {
     display: flex;
     align-items: center;
-    gap: $nav-item-gap;
+    gap: 32px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -110,21 +56,23 @@ $nav-mobile-breakpoint: 900px;
 
   .nav-item {
     position: static;
-    height: 100%;
     display: flex;
     align-items: center;
+    height: 100%;
 
     &.nav-item-account {
       margin-left: auto;
     }
 
-    &.is-open .nav-item-trigger::after {
-      transform: scaleX(1);
-    }
+    &.is-open {
+      .nav-item-trigger::after {
+        transform: scaleX(1);
+      }
 
-    &.is-open .nav-menu-panel,
-    &.is-open .nav-account-panel {
-      display: block;
+      .nav-menu-panel,
+      .nav-account-panel {
+        display: block;
+      }
     }
   }
 
@@ -133,10 +81,10 @@ $nav-mobile-breakpoint: 900px;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: $nav-item-font-size;
+    font-size: 16px;
     font-weight: 700;
     color: var(--nav-text);
-    padding: $nav-item-padding-y 0;
+    padding: 22px 0;
     position: relative;
     text-decoration: none;
     white-space: nowrap;
@@ -147,10 +95,10 @@ $nav-mobile-breakpoint: 900px;
       left: 0;
       right: 0;
       bottom: 0;
-      height: $nav-underline-height;
+      height: 3px;
       background: var(--nav-red);
       transform: scaleX(0);
-      transition: transform $nav-underline-transition;
+      transition: transform .15s ease;
     }
 
     &:hover::after {
@@ -166,7 +114,7 @@ $nav-mobile-breakpoint: 900px;
         content: '';
         width: 20px;
         height: 20px;
-        border: 1.5px solid currentcolor;
+        border: 1.5px solid currentColor;
         border-radius: 50%;
         display: inline-block;
       }
@@ -178,12 +126,11 @@ $nav-mobile-breakpoint: 900px;
   }
 
   .nav-item-icon {
-    width: $nav-item-icon-size;
-    height: $nav-item-icon-size;
+    width: 22px;
+    height: 22px;
     display: block;
   }
 
-  // --- Mega menu panel ---
   .nav-menu-panel,
   .nav-account-panel {
     display: none;
@@ -191,26 +138,32 @@ $nav-mobile-breakpoint: 900px;
     top: 100%;
     left: 0;
     right: 0;
-    background: #fff;
-    border-top: 1px solid var(--nav-border);
-    box-shadow: $nav-panel-shadow;
+
+    background: #f5f5f5;
+    border-top: 1px solid #d9d9d9;
+    box-shadow: none;
   }
 
   .nav-account-panel {
     left: auto;
     right: 32px;
-    width: $nav-account-panel-width;
+    width: 420px;
     border-top: none;
     border-radius: 4px;
     margin-top: 8px;
+    background: #fff;
   }
 
   .nav-menu-panel-inner {
-    max-width: var(--nav-max-width);
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 40px 32px;
-    display: flex;
-    gap: $nav-col-gap;
+    padding: 60px 48px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 72px;
+
+    align-items: start;
   }
 
   .nav-account-panel-inner {
@@ -220,90 +173,106 @@ $nav-mobile-breakpoint: 900px;
     gap: 20px;
   }
 
-  // --- Menu columns (link lists) ---
   .nav-menu-col {
-    flex: 1 1 0;
-    min-width: $nav-col-min-width;
-
-    &-title {
-      font-size: $nav-col-title-size;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--nav-muted);
-      margin: 0 0 16px;
-    }
-
-    &-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-
-      a {
-        font-size: $nav-col-link-size;
-        font-weight: 600;
-        color: var(--nav-text);
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
+    display: flex;
+    flex-direction: column;
   }
 
-  // --- CTA card inside a mega menu / account panel ---
-  .nav-menu-cta {
-    flex: 1 1 0;
-    min-width: $nav-cta-min-width;
+  .nav-menu-col-title {
+    margin: 0 0 32px;
 
-    &-title {
-      font-size: $nav-cta-title-size;
-      font-weight: 800;
-      color: var(--nav-text);
-      margin: 0 0 12px;
-      line-height: 1.2;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #777;
+  }
+
+  .nav-menu-col-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 24px;
     }
 
-    &-desc {
-      font-size: $nav-cta-desc-size;
-      color: var(--nav-text);
-      line-height: 1.5;
-      margin: 0 0 20px;
-    }
-
-    &-btn {
-      display: inline-block;
-      background: $nav-cta-btn-bg;
-      color: #fff;
-      font-weight: 700;
-      font-size: $nav-cta-btn-size;
+    a {
+      color: #000;
       text-decoration: none;
-      padding: $nav-cta-btn-padding;
-      border-radius: $nav-cta-btn-radius;
+
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
 
       &:hover {
-        background: $nav-cta-btn-bg-hover;
+        text-decoration: underline;
       }
     }
   }
 
-  // Account panel's CTA uses the brand red button
-  .nav-account-panel-inner .nav-menu-cta-btn {
-    background: var(--nav-red);
-    border-radius: $nav-cta-btn-radius;
-    width: 100%;
-    text-align: center;
+  .nav-menu-cta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-menu-cta-title {
+    margin: 0 0 24px;
+
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+
+    color: #000;
+  }
+
+  .nav-menu-cta-desc {
+    margin: 0 0 32px;
+
+    font-size: 18px;
+    line-height: 1.8;
+
+    color: #4a4a4a;
+  }
+
+  .nav-menu-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 280px;
+    min-height: 58px;
+
+    padding: 16px 34px;
+
+    border-radius: 999px;
+
+    background: #000;
+    color: #fff;
+
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
 
     &:hover {
-      background: $nav-red-hover;
+      background: #222;
     }
   }
 
-  // --- Account collapsible rows (Notifications / My Saves / Settings) ---
+  .nav-account-panel-inner {
+    .nav-menu-cta-btn {
+      width: 100%;
+      text-align: center;
+
+      background: var(--nav-red);
+
+      &:hover {
+        background: #c40819;
+      }
+    }
+  }
+
   .nav-account-list {
     display: flex;
     flex-direction: column;
@@ -316,51 +285,57 @@ $nav-mobile-breakpoint: 900px;
       border-bottom: 1px solid var(--nav-border);
     }
 
-    &[open] .nav-account-row-chevron {
-      transform: rotate(45deg);
-    }
-
-    &-summary {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: $nav-account-row-padding;
-      cursor: pointer;
-      font-size: $nav-account-row-font-size;
-      font-weight: 600;
-      color: var(--nav-text);
-
-      &::-webkit-details-marker {
-        display: none;
+    &[open] {
+      .nav-account-row-chevron {
+        transform: rotate(45deg);
       }
-    }
-
-    &-chevron {
-      width: $nav-account-chevron-size;
-      height: $nav-account-chevron-size;
-      border-right: 2px solid var(--nav-muted);
-      border-bottom: 2px solid var(--nav-muted);
-      transform: rotate(-45deg);
-      transition: transform 0.15s ease;
     }
   }
 
-  // --- Responsive: collapse to a simple stacked mobile menu ---
-  @media (max-width: $nav-mobile-breakpoint) {
+  .nav-account-row-summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 4px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--nav-text);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  .nav-account-row-chevron {
+    width: 10px;
+    height: 10px;
+
+    border-right: 2px solid var(--nav-muted);
+    border-bottom: 2px solid var(--nav-muted);
+
+    transform: rotate(-45deg);
+    transition: transform .15s ease;
+  }
+
+  @media (max-width: 900px) {
     .nav-menu {
       display: none;
     }
 
     .nav-menu-panel-inner {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       gap: 32px;
       padding: 24px;
     }
 
     .nav-account-panel {
-      right: 16px;
       left: 16px;
+      right: 16px;
       width: auto;
     }
   }
