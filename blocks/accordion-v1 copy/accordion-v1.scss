@@ -1,0 +1,106 @@
+// ==========================
+// Variables
+// ==========================
+//
+$color-heading: #1a1a1a;
+$color-body: #333;
+$color-focus-outline: #2563eb;
+
+$font-size-trigger: 24px;
+$font-size-panel: 24px;
+
+$trigger-padding-mobile: 22px 4px 22px 24px;
+$trigger-padding-desktop: 26px 4px 26px 28px;
+
+$trigger-gap-mobile: 18px;
+$trigger-gap-desktop: 20px;
+
+$chevron-size: 0.5em;
+
+$panel-transition: max-height 0.28s ease;
+$chevron-transition: transform 0.3s ease;
+
+$bp-desktop: 700px;
+
+// ==========================
+// Accordion Block
+// ==========================
+.accordion-block {
+  .accordion-v1 {
+    display: block;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .accordion-v1-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .accordion-v1-trigger {
+    display: flex;
+    align-items: center;
+    gap: $trigger-gap-mobile;
+    width: 100%;
+    padding: $trigger-padding-mobile;
+    background: transparent;
+    border: 0;
+    text-align: left;
+    cursor: default;
+    font-size: $font-size-trigger;
+    font-weight: 700;
+    color: $color-heading;
+    font-family: inherit;
+
+    &-text {
+      cursor: pointer;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-focus-outline;
+      outline-offset: 2px;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      flex: 0 0 auto;
+      width: $chevron-size;
+      height: $chevron-size;
+      border-right: 2px solid var(--color-chevron);
+      border-bottom: 2px solid var(--color-chevron);
+      transform: rotate(-45deg);
+      transition: $chevron-transition;
+    }
+
+    &[aria-expanded="true"]::before {
+      transform: rotate(45deg);
+    }
+  }
+
+  .accordion-v1-panel {
+    overflow: hidden;
+    transition: $panel-transition;
+
+    &[hidden] {
+      display: block;
+    }
+
+    &-inner {
+      padding: 0 24px 24px calc(#{$chevron-size} + #{$trigger-gap-mobile} + 24px);
+      color: $color-body;
+      font-size: $font-size-panel;
+      line-height: 1.6;
+    }
+  }
+
+  @media (min-width: $bp-desktop) {
+    .accordion-v1-trigger {
+      padding: $trigger-padding-desktop;
+      gap: $trigger-gap-desktop;
+      font-size: $font-size-trigger;
+    }
+
+    .accordion-v1-panel-inner {
+      padding-left: calc(#{$chevron-size} + #{$trigger-gap-desktop} + 28px);
+    }
+  }
+}
