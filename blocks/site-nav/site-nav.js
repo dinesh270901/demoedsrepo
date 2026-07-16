@@ -59,7 +59,6 @@ function buildColumn(titleText, listEl) {
 }
 
 
-
 /** Build the highlighted CTA card (heading + description + button). */
 function buildCta(titleText, descText, buttonEl) {
   const cta = document.createElement('div');
@@ -86,18 +85,6 @@ function buildCta(titleText, descText, buttonEl) {
 
   return cta;
 }
-
-//FOR BUTTON//
-
-const mobileToggle = document.createElement('button');
-mobileToggle.className = 'nav-mobile-toggle';
-mobileToggle.innerHTML = '&#9776;';
-
-nav.prepend(mobileToggle);
-
-mobileToggle.addEventListener('click', () => {
-  nav.classList.toggle('mobile-open');
-});
 
 /** Turn a plain <ul> into collapsible account rows (chevron toggle). */
 function buildAccountList(listEl) {
